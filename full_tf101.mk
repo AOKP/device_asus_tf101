@@ -25,7 +25,7 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
 # Inherit from toro device
-$(call inherit-product, device/asus/tf101/device_tf101.mk)
+$(call inherit-product, device/asus/tf101/tf101.mk)
 
 # This is where we'd set a backup provider if we had one
 #$(call inherit-product, device/sample/products/backup_overlay.mk)
