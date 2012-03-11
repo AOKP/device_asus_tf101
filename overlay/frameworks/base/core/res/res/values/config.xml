@@ -22,7 +22,7 @@
 <resources>
 
     <bool name="config_showNavigationBar">false</bool>
-   
+
     <bool name="config_unplugTurnsOnScreen">false</bool>
 
     <integer name="config_longPressOnPowerBehavior">1</integer>
@@ -30,7 +30,7 @@
     <bool name="config_batterySdCardAccessibility">true</bool>
 
     <bool name="config_sf_limitedAlpha">false</bool>
- 
+
     <bool name="config_allowAllRotations">true</bool>
 
     <bool name="config_sf_slowBlur">true</bool>
@@ -143,6 +143,15 @@
     <!-- Whether to even allow system settings for crt animations
      setting this to false will completely disable them -->
     <bool name="config_enableCrtAnimations">false</bool>
+
+    <!-- The number of degrees to rotate the display when the keyboard is open. -->
+    <integer name="config_lidOpenRotation">-1</integer>
+
+    <!-- Indicate whether the lid state impacts the accessibility of
+         the physical keyboard.  0 means it doesn't, 1 means it is accessible
+         when the lid is open, 2 means it is accessible when the lid is
+         closed.  The default is 1. -->
+    <integer name="config_lidKeyboardAccessibility">0</integer>
 
 
 </resources>
