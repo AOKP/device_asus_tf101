@@ -202,7 +202,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/firmware/BCM4329B1_002.002.023.0797.0863.hcd:system/etc/firmware/BCM4329B1_002.002.023.0797.0863.hcd \
     $(LOCAL_PATH)/prebuilt/firmware/fw_bcm4329.bin:system/vendor/firmware/fw_bcm4329.bin \
-    $(LOCAL_PATH)/prebuilt/firmware/fw_bcm4329_apsta.bin:system/vendor/firmware/fw_bcm4329_apsta.bin
+    $(LOCAL_PATH)/prebuilt/firmware/fw_bcm4329_apsta.bin:system/vendor/firmware/fw_bcm4329_apsta.bin \
     $(LOCAL_PATH)/wifi/nvram_murata.txt:system/etc/nvram_murata.txt \
     $(LOCAL_PATH)/wifi/nvram_nh615_sl101.txt:system/etc/nvram_nh615_sl101.txt \
     $(LOCAL_PATH)/wifi/nvram_nh615.txt:system/etc/nvram_nh615.txt \
