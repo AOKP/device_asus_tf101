@@ -50,6 +50,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/prebuilt/gpsconfig.xml:system/etc/gps/gpsconfig.xml
 
+# Prebuilt wpa_suplicant fix
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/system/bin/wpa_supplicant:system/bin/wpa_supplicant \
+	$(LOCAL_PATH)/prebuilt/system/bin/wpa_cli:system/bin/wpa_cli
+	
 # Prebuilt keyboard APKs
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/system/app/XT9IME.apk:system/app/XT9IME.apk \
