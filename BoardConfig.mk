@@ -81,7 +81,7 @@ TARGET_PREBUILT_KERNEL := device/asus/tf101/kernel
 
 # Coustom Tools
 #BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/asus/tf101/recovery_ui.c
-TARGET_RECOVERY_PRE_COMMAND := "echo 'boot-recovery' > /dev/block/mmcblk0p3; sync"
+TARGET_RECOVERY_PRE_COMMAND := "echo boot-recovery|dd of=/dev/block/mmcblk0p3 bs=1 seek=0; reboot"
 TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/asus/tf101/releasetools/tf101_ota_from_target_files
 
 
