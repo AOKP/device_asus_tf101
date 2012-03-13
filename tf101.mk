@@ -53,7 +53,8 @@ PRODUCT_COPY_FILES += \
 # Prebuilt keyboard APKs
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/system/app/XT9IME.apk:system/app/XT9IME.apk \
-	$(LOCAL_PATH)/prebuilt/system/app/Keyboard.apk:system/app/Keyboard.apk
+	$(LOCAL_PATH)/prebuilt/system/app/Keyboard.apk:system/app/Keyboard.apk \
+    $(LOCAL_PATH)/prebuilt/system/app/LatinImeDictionaryPack.apk:system/app/LatinImeDictionaryPack.apk
 
 # Input device configeration files
 PRODUCT_COPY_FILES += \
