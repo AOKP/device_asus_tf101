@@ -1,0 +1,25 @@
+Installing needed software
+--------------------------
+
+For Debian/Ubuntu:
+    sudo apt-get install git-core gnupg flex bison gperf libsdl1.2-dev libesd0-dev libwxgtk2.6-dev squashfs-tools build-essential zip curl libncurses5-dev zlib1g-dev sun-java6-jdk pngcrush schedtool g++-multilib lib32z1-dev lib32ncurses5-dev lib32readline5-dev gcc-4.3-multilib g++-4.3-multilib
+
+Get Repo
+--------
+
+    mkdir ~/bin
+    export PATH=~/bin:$PATH
+    curl https://dl-ssl.google.com/dl/googlesource/git-repo/repo > ~/bin/repo
+    chmod a+x ~/bin/repo
+
+Getting Started with AOKP for the TF101
+---------------------------------------
+
+    mkdir ~/aokp
+    cd ~/aokp
+    repo init -u git://github.com/hillbillyhacker86/android.git -b aokp
+    repo sync -jx (x= any number based on your internet connection speed i use 16 for a fast connection)
+    . build/envsetup.sh
+    lunch aokp_tf101-userdebug
+    make otapackage -jx (x= a number based on your processor and computer i use -j16 on a quad core amd phenom with 8gb ram
+    Look in out/target/product/tf101 for your build
