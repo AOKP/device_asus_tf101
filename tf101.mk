@@ -197,7 +197,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/modules/bcm4329.ko:system/lib/modules/bcm4329.ko \
     $(LOCAL_PATH)/modules/battery_rvsd.ko:system/lib/modules/battery_rvsd.ko \
     $(LOCAL_PATH)/modules/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
-    $(LOCAL_PATH)/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko
+    $(LOCAL_PATH)/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
+    $(LOCAL_PATH)/modules/cifs.ko:system/lib/modules/cifs.ko \
+    $(LOCAL_PATH)/modules/ff-memless.ko:system/lib/modules/ff-memless.ko \
+    $(LOCAL_PATH)/modules/md4.ko:system/lib/modules/md4.ko \
+    $(LOCAL_PATH)/modules/nls_ascii.ko:system/lib/modules/nls_ascii.ko \
+    $(LOCAL_PATH)/modules/nls_iso8859-1.ko:system/lib/modules/nls_iso8859-1.ko \
+    $(LOCAL_PATH)/modules/xpad.ko:system/lib/modules/xpad.ko
 
 # Camera/WiFi/BT Firmware
 PRODUCT_COPY_FILES += \
