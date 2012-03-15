@@ -55,7 +55,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/system/app/XT9IME.apk:system/app/XT9IME.apk \
     $(LOCAL_PATH)/prebuilt/system/app/Keyboard.apk:system/app/Keyboard.apk \
-    $(LOCAL_PATH)/prebuilt/system/app/LatinIME+.apk:system/app/LatinIME+.apk \
+    $(LOCAL_PATH)/prebuilt/system/app/LatinIME+.apk:system/app/LatinIME.apk \
     $(LOCAL_PATH)/prebuilt/system/app/LatinImeDictionaryPack.apk:system/app/LatinImeDictionaryPack.apk \
     $(LOCAL_PATH)/prebuilt/system/app/UserDictionaryProvider.apk:system/app/UserDictionaryProvider.apk
 
