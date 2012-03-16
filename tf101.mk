@@ -60,11 +60,14 @@ PRODUCT_COPY_FILES += \
 
 # Input device configeration files
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/lib/libchinesetrace.so:system/lib/libchinesetrace.so \
+    $(LOCAL_PATH)/lib/libkeyboard_jni.so:system/lib/libkeyboard_jni.so \
     $(LOCAL_PATH)/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
     $(LOCAL_PATH)/lib/libjni_mosaic.so:system/lib/libjni_mosaic.so \
     $(LOCAL_PATH)/lib/libjni_xt9input.so:system/lib/libjni_xt9input.so \
     $(LOCAL_PATH)/lib/libjni_xt9kcm.so:system/lib/libjni_xt9kcm.so \
     $(LOCAL_PATH)/lib/libjni_xt9korean.so:system/lib/libjni_xt9korean.so \
+    $(LOCAL_PATH)/lib/libshapewriter.so:system/lib/libshapewriter.so \
     $(LOCAL_PATH)/usr/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
     $(LOCAL_PATH)/usr/idc/elantech_touchscreen.idc:system/usr/idc/elantech_touchscreen.idc \
     $(LOCAL_PATH)/usr/idc/panjit_touch.idc:system/usr/idc/panjit_touch.idc \
