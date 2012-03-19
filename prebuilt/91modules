@@ -1,0 +1,8 @@
+#!/system/bin/sh
+sleep 1
+insmod /system/lib/modules/cifs.ko
+insmod /system/lib/modules/ff-memless.ko
+insmod /system/lib/modules/md4.ko
+insmod /system/lib/modules/nls_ascii.ko
+insmod /system/lib/modules/nls_iso8859-1.ko
+insmod /system/lib/modules/xpad.ko
