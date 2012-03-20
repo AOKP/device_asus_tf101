@@ -21,17 +21,17 @@ $(call inherit-product-if-exists, vendor/asus/tf101/tf101-vendor.mk)
 
 # Prebuilt kernel location
 ifeq ($(TARGET_3G), true)
-	DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay3g
+    DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay3g
 else
-	DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay
+    DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay
 endif
 
 
 # Prebuilt kernel location
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/asus/tf101/kernel
+    LOCAL_KERNEL := device/asus/tf101/kernel
 else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
 # Files needed for boot image
@@ -217,6 +217,22 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/nvram_nh615.txt:system/etc/nvram_nh615.txt \
     $(LOCAL_PATH)/wifi/nvram.txt:system/etc/nvram.txt
 
+# 3G Stuff
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/lib/libhuawei-ril.so:system/lib/libhuawei-ril.so \
+    $(LOCAL_PATH)/etc/ppp/chap-secrets:system/etc/ppp/chap-secrets \
+    $(LOCAL_PATH)/etc/ppp/gprs-connect-chat:system/etc/ppp/gprs-connect-chat \
+    $(LOCAL_PATH)/etc/ppp/ip-down:system/etc/ppp/ip-down \
+    $(LOCAL_PATH)/etc/ppp/ip-down-HUAWEI:system/etc/ppp/ip-down-HUAWEI \
+    $(LOCAL_PATH)/etc/ppp/ip-up:system/etc/ppp/ip-up \
+    $(LOCAL_PATH)/etc/ppp/ip-up-HUAWEI:system/etc/ppp/ip-up-HUAWEI \
+    $(LOCAL_PATH)/etc/ppp/ip-up-vpn:system/etc/ppp/ip-up-vpn \
+    $(LOCAL_PATH)/etc/ppp/options.huawei:system/etc/ppp/options.huawei \
+    $(LOCAL_PATH)/etc/ppp/pap-secrets:system/etc/ppp/pap-secrets \
+    $(LOCAL_PATH)/etc/ppp/peers/gprs:system/etc/ppp/peers/gprs \
+    $(LOCAL_PATH)/etc/ppp/peers/pppd-ril.options/:system/etc/ppp/peers/pppd-ril.options
+
+
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/permissions/com.asus.hardware.00.xml:system/etc/permissions/com.asus.hardware.00.xml \
@@ -245,28 +261,28 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Extra packages to build for this device
 PRODUCT_PACKAGES += \
-    	librs_jni \
-	com.android.future.usb.accessory \
-	make_ext4fs \
-	setup_fs \
+        librs_jni \
+        com.android.future.usb.accessory \
+        make_ext4fs \
+        setup_fs \
         audio.a2dp.default \
         libaudioutils \
-	libinvensense_mpl \
+        libinvensense_mpl \
         blobpack_tf
 
 # Propertys spacific for this device
 #ro.build.branch and ro.build.modversion is for system update (still in dev)(timbit123)
 PRODUCT_PROPERTY_OVERRIDES := \
-	ro.wifi.country=GB \
+        ro.wifi.country=GB \
         ro.build.branch=tf101 \
-	ro.build.modversion=1.0.0 \
+        ro.build.modversion=1.0.0 \
         ro.ethernet.interface=eth0 \
         ro.ethernet.autoEnable=yes \
-    	wifi.interface=wlan0 \
-    	wifi.supplicant_scan_interval=15 \
-    	ro.opengles.version=131072 \
-	persist.sys.usb.config=mtp,adb \
-	dalvik.vm.dexopt-data-only=1
+        wifi.interface=wlan0 \
+        wifi.supplicant_scan_interval=15 \
+        ro.opengles.version=131072 \
+        persist.sys.usb.config=mtp,adb \
+        dalvik.vm.dexopt-data-only=1
 
 # Inherit tablet dalvik settings
 $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
