@@ -32,8 +32,6 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
     $(LOCAL_PATH)/ramdisk/init:root/init \
-    $(LOCAL_PATH)/ramdisk/sbin/texfat.ko:root/sbin/texfat.ko \
-    $(LOCAL_PATH)/ramdisk/sbin/tntfs.ko:root/sbin/tntfs.ko \
     $(LOCAL_PATH)/ramdisk/sbin/adbd:root/sbin/adbd \
     $(LOCAL_PATH)/ramdisk/sbin/ueventd:root/sbin/ueventd \
     $(LOCAL_PATH)/ramdisk/default.prop:root/default.prop \
@@ -70,7 +68,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/lib/modules/bcm4329.ko:system/lib/modules/bcm4329.ko \
     $(LOCAL_PATH)/prebuilt/lib/modules/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
     $(LOCAL_PATH)/prebuilt/lib/modules/battery_rvsd.ko:system/lib/modules/battery_rvsd.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko
+    $(LOCAL_PATH)/prebuilt/lib/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
+    $(LOCAL_PATH)/prebuilt/lib/modules/cifs.ko:system/lib/modules/cifs.ko \
+    $(LOCAL_PATH)/prebuilt/lib/modules/md4.ko:system/lib/modules/md4.ko \
+    $(LOCAL_PATH)/prebuilt/lib/modules/texfat.ko:system/lib/modules/texfat.ko \
+    $(LOCAL_PATH)/prebuilt/lib/modules/tntfs.ko:system/lib/modules/tntfs.ko
 
 # Camera/WiFi/BT Firmware
 PRODUCT_COPY_FILES += \
@@ -98,9 +100,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/vendor/firmware/bcm4329/fw_bcmdhd_p2p.bin:system/vendor/firmware/bcm4329/fw_bcmdhd_p2p.bin \
     $(LOCAL_PATH)/prebuilt/bin/brcm_patchram_plus:system/bin/brcm_patchram_plus \
     $(LOCAL_PATH)/prebuilt/bin/pppd_btdun:system/bin/pppd_btdun \
-    $(LOCAL_PATH)/prebuilt/bin/wifimacwriter:system/bin/wifimacwriter \
-    $(LOCAL_PATH)/prebuilt/bin/wpa_supplicant:system/bin/wpa_supplicant \
-    $(LOCAL_PATH)/prebuilt/bin/wpa_supplicant2:system/bin/wpa_supplicant2
+    $(LOCAL_PATH)/prebuilt/bin/wifimacwriter:system/bin/wifimacwriter
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -149,7 +149,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/app/LatinIME.apk:system/app/LatinIME.apk \
     $(LOCAL_PATH)/prebuilt/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
-    $(LOCAL_PATH)/prebuilt/lib/libhardware_legacy.so:system/lib/libhardware_legacy.so \
     $(LOCAL_PATH)/prebuilt/xbin/remount:system/xbin/remount \
     $(LOCAL_PATH)/prebuilt/bin/sensors-config:system/bin/sensors-config \
     $(LOCAL_PATH)/prebuilt/bin/glgps:system/bin/glgps \
@@ -161,6 +160,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/permissions/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     $(LOCAL_PATH)/prebuilt/lib/libhuawei-ril.so:system/lib/libhuawei-ril.so \
     $(LOCAL_PATH)/prebuilt/etc/init.d/02ppp:system/etc/init.d/02ppp \
+    $(LOCAL_PATH)/prebuilt/etc/init.d/05modules:system/etc/init.d/05modules \
     $(LOCAL_PATH)/prebuilt/etc/ppp/peers/gprs:system/etc/ppp/peers/gprs \
     $(LOCAL_PATH)/prebuilt/etc/ppp/peers/pppd-ril.options:system/etc/ppp/peers/pppd-ril.options \
     $(LOCAL_PATH)/prebuilt/etc/ppp/chap-secrets:system/etc/ppp/chap-secrets \
