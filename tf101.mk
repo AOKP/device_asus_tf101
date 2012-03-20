@@ -48,9 +48,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/prebuilt/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/prebuilt/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/prebuilt/gpsconfig.xml:system/etc/gps/gpsconfig.xml
+    $(LOCAL_PATH)/prebuilt/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    $(LOCAL_PATH)/prebuilt/91modules:system/etc/init.d/91modules
 
-	
 # Prebuilt keyboard APKs
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/system/app/XT9IME.apk:system/app/XT9IME.apk \
