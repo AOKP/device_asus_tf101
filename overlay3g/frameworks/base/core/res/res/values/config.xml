@@ -157,5 +157,7 @@
          closed.  The default is 1. -->
     <integer name="config_lidKeyboardAccessibility">0</integer>
 
+    <!-- Asus dock compatibility -->
+    <bool name="config_hasDockBattery">true</bool>
 
 </resources>
