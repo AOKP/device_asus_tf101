@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<permissions>
+    <!-- Asus epad hardware feature-->
+    <feature name="aokp.hardware.dock" />
+    <feature name="aokp.hardware.hall_sensor" />
+    <feature name="aokp.hardware.keyboard" />
+    <feature name="aokp.hardware.fw.dock_ec" />
+    <feature name="aokp.hardware.fw.touch" />
+    <feature name="aokp.hardware.sound.srs" />
+    <feature name="aokp.hardware.gps" />
+</permissions>
