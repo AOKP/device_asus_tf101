@@ -61,9 +61,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/usr/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
     $(LOCAL_PATH)/usr/idc/elantech_touchscreen.idc:system/usr/idc/elantech_touchscreen.idc \
     $(LOCAL_PATH)/usr/idc/panjit_touch.idc:system/usr/idc/panjit_touch.idc \
-    $(LOCAL_PATH)/usr/keychars/asusec.kcm:system/usr/keychars/asusec.kcm \
-    $(LOCAL_PATH)/usr/keylayout/asusec.kl:system/usr/keylayout/asusec.kl \
-    $(LOCAL_PATH)/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 # Any prebuilt kernel modules
 PRODUCT_COPY_FILES += \
