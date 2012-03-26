@@ -18,9 +18,8 @@ Getting Started with AOKP for the TF101
 
     mkdir ~/aokp
     cd ~/aokp
-    repo init -u git://github.com/hillbillyhacker86/android.git -b aokp
-    repo sync -jx (x= any number based on your internet connection speed i use 16 for a fast connection)
+    repo init -u git://github.com/AOKP/platform_manifest.git -b master
+    repo sync -j16
     . build/envsetup.sh
-    lunch aokp_tf101-userdebug
-    make otapackage -jx (x= a number based on your processor and computer i use -j16 on a quad core amd phenom with 8gb ram
+    brunch tf101
     Look in out/target/product/tf101 for your build
