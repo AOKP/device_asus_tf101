@@ -33,7 +33,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
     $(LOCAL_PATH)/ramdisk/init.ventana.rc:root/init.ventana.rc \
     $(LOCAL_PATH)/ramdisk/init.ventana.usb.rc:root/init.ventana.usb.rc \
-    $(LOCAL_PATH)/ramdisk/ueventd.ventana.rc:root/ueventd.ventana.rc
+    $(LOCAL_PATH)/ramdisk/ueventd.ventana.rc:root/ueventd.ventana.rc \
+    $(LOCAL_PATH)/ramdisk/init.ventana.keyboard.rc:root/init.ventana.keyboard.rc \
+    $(LOCAL_PATH)/prebuilt/keyswap::root/sbin/keyswap
 
 # Prebuilt configeration files
 PRODUCT_COPY_FILES += \
@@ -116,7 +118,8 @@ PRODUCT_PACKAGES += \
         l2ping \
         hcitool \
         bttest \
-        whisperd
+        whisperd \
+        AutoParts
 
 # Propertys spacific for this device
 PRODUCT_PROPERTY_OVERRIDES := \
