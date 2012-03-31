@@ -448,6 +448,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
 
   Item.GetMetadata(input_zip)
   Item.Get("system").SetPermissions(script)
+  script.SetPermissionsRecursive("/system/etc/init.d", 0, 0, 0755, 0555)
 
   common.ZipWriteStr(output_zip, "boot.blob", blob.data)
   script.ShowProgress(0.2, 0)
