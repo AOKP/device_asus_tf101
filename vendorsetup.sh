@@ -14,5 +14,5 @@
 # limitations under the License.
 #
 
-#add_lunch_combo medroid_tf101-userdebug
-#add_lunch_combo medroid_tf101-eng
+add_lunch_combo medroid_tf101-userdebug
+add_lunch_combo medroid_tf101-eng
