@@ -139,16 +139,13 @@ PRODUCT_PACKAGES += \
         blobpack_tf
 
 # Propertys spacific for this device
-#ro.build.branch and ro.build.modversion is for system update (still in dev)(timbit123)
 PRODUCT_PROPERTY_OVERRIDES := \
-        ro.wifi.country=GB \
-        ro.build.branch=tf101 \
-        ro.build.modversion=1.0.0 \
         ro.ethernet.interface=eth0 \
         ro.ethernet.autoEnable=yes \
         wifi.interface=wlan0 \
         wifi.supplicant_scan_interval=15 \
         ro.opengles.version=131072 \
+        ro.sf.lcd_density=160
         persist.sys.usb.config=mtp,adb \
         dalvik.vm.dexopt-data-only=1
 
@@ -157,4 +154,3 @@ $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
 
 # Call the vendor to setup propiatory files
 $(call inherit-product-if-exists, vendor/asus/tf101/tf101-vendor.mk)
-PRODUCT_MANUFACTURER := Asus
