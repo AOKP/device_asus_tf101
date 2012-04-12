@@ -19,13 +19,7 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 $(call inherit-product-if-exists, vendor/asus/tf101/tf101-vendor.mk)
 
-# Prebuilt kernel location
-ifeq ($(TARGET_3G), true)
-    DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay3g
-else
-    DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay
-endif
-
+DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay
 
 # Prebuilt kernel location
 ifeq ($(TARGET_PREBUILT_KERNEL),)
@@ -147,7 +141,11 @@ PRODUCT_PROPERTY_OVERRIDES := \
         ro.opengles.version=131072 \
         ro.sf.lcd_density=160
         persist.sys.usb.config=mtp,adb \
-        dalvik.vm.dexopt-data-only=1
+        dalvik.vm.dexopt-data-only=1 \
+        picasso.3g=true \
+        rild.libpath=/system/lib/libhuawei-ril.so \
+        rild.libargs=-d /dev/ttyUSB2 \
+        ro.pad.features.modem=true
 
 # Inherit tablet dalvik settings
 $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
