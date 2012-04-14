@@ -16,6 +16,7 @@
 
 BOARD_USES_GENERIC_AUDIO := false
 USE_CAMERA_STUB := false
+TARGET_HAS_DOCK_BATTERY := true
 
 # inherit from the proprietary version
 -include vendor/asus/tf101/BoardConfigVendor.mk
