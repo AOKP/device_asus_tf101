@@ -1,4 +1,5 @@
-import init.nv_dev_board.usb.rc
+import init.ventana.usb.rc
+import init.ventana.keyboard.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -79,7 +80,7 @@ on boot
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 216000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1000000
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load 94
+    write /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load 80
     write /sys/module/cpuidle/parameters/lp2_in_idle 1
 
 # Touchscreen Config-UI interface
@@ -110,8 +111,8 @@ on boot
     chmod 0664 /sys/class/gpio/gpio203/value
 
 #NTFS exFAT support
-#    insmod /sbin/tntfs.ko
-#    insmod /sbin/texfat.ko
+    insmod /sbin/tntfs.ko
+    insmod /sbin/texfat.ko
 
 # RIL
 # Define TCP buffer sizes for hspa networks
@@ -198,7 +199,7 @@ service bugreport /system/bin/dumpstate -d -v -o /data/storage/bugreports/bugrep
 
 #BCM
 service hciattach /system/bin/brcm_patchram_plus --enable_hci --scopcm=0,2,0,0,0,0,0,0,0,0 \
-    --baudrate 3000000 --patchramdir /etc/firmware --enable_lpm --tosleep=50000 /dev/ttyHS2
+    --baudrate 3000000 --patchram /etc/firmware/BCM4329B1_002.002.023.0797.0863.hcd --enable_lpm /dev/ttyHS2
     class main
     user root
     group system bluetooth net_bt_admin misc

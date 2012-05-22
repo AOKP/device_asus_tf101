@@ -31,18 +31,8 @@ endif
 # Files needed for boot image
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
-    $(LOCAL_PATH)/ramdisk/init:root/init \
-    $(LOCAL_PATH)/ramdisk/sbin/adbd:root/sbin/adbd \
-    $(LOCAL_PATH)/ramdisk/sbin/ueventd:root/sbin/ueventd \
-    $(LOCAL_PATH)/ramdisk/default.prop:root/default.prop \
-    $(LOCAL_PATH)/ramdisk/init.00.rc:root/init.00.rc \
-    $(LOCAL_PATH)/ramdisk/init.01.rc:root/init.01.rc \
-    $(LOCAL_PATH)/ramdisk/init.08.rc:root/init.08.rc \
-    $(LOCAL_PATH)/ramdisk/init.goldfish.rc:root/init.goldfish.rc \
-    $(LOCAL_PATH)/ramdisk/init.rc:root/init.rc \
     $(LOCAL_PATH)/ramdisk/init.ventana.rc:root/init.ventana.rc \
-    $(LOCAL_PATH)/ramdisk/ueventd.goldfish.rc:root/ueventd.goldfish.rc \
-    $(LOCAL_PATH)/ramdisk/ueventd.rc:root/ueventd.rc \
+    $(LOCAL_PATH)/ramdisk/init.ventana.usb.rc:root/init.ventana.usb.rc \
     $(LOCAL_PATH)/ramdisk/ueventd.ventana.rc:root/ueventd.ventana.rc
 
 # Prebuilt configeration files
