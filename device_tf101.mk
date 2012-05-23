@@ -52,10 +52,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/lib/modules/battery_rvsd.ko:system/lib/modules/battery_rvsd.ko \
     $(LOCAL_PATH)/prebuilt/lib/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/cifs.ko:system/lib/modules/cifs.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/md4.ko:system/lib/modules/md4.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/texfat.ko:system/lib/modules/texfat.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/tntfs.ko:system/lib/modules/tntfs.ko
 
 # Camera/WiFi/BT Firmware
 PRODUCT_COPY_FILES += \
