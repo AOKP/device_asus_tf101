@@ -4,10 +4,5 @@
 ro.wifi.country=EU
 ro.ethernet.interface=eth0
 ro.ethernet.autoEnable=yes
-keyguard.no_require_sim=true
 picasso.3g=true
-rild.libpath=/system/lib/libhuawei-ril.so
-rild.libargs=-d /dev/ttyUSB2
-#ro.radio.use-ppp=yes
-#ro.radio.noril=no
-ro.pad.features.modem=true
+ro.pad.features.modem=false

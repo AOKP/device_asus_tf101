@@ -23,9 +23,9 @@ DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay
 
 # Prebuilt kernel location
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/asus/tf101/kernel
+    LOCAL_KERNEL := device/asus/tf101/kernel
 else
-	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
 # Files needed for boot image
@@ -127,22 +127,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/xbin/rfcomm:system/xbin/rfcomm \
     $(LOCAL_PATH)/prebuilt/xbin/ps3bttest:system/xbin/ps3bttest \
     $(LOCAL_PATH)/prebuilt/bin/sixpair:system/bin/sixpair \
-    $(LOCAL_PATH)/prebuilt/etc/permissions/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    $(LOCAL_PATH)/prebuilt/lib/libhuawei-ril.so:system/lib/libhuawei-ril.so \
     $(LOCAL_PATH)/prebuilt/etc/init.d/02ppp:system/etc/init.d/02ppp \
-    $(LOCAL_PATH)/prebuilt/etc/init.d/05modules:system/etc/init.d/05modules \
-    $(LOCAL_PATH)/prebuilt/etc/ppp/peers/gprs:system/etc/ppp/peers/gprs \
-    $(LOCAL_PATH)/prebuilt/etc/ppp/peers/pppd-ril.options:system/etc/ppp/peers/pppd-ril.options \
-    $(LOCAL_PATH)/prebuilt/etc/ppp/chap-secrets:system/etc/ppp/chap-secrets \
-    $(LOCAL_PATH)/prebuilt/etc/ppp/gprs-connect-chat:system/etc/ppp/gprs-connect-chat \
-    $(LOCAL_PATH)/prebuilt/etc/ppp/ip-down:system/etc/ppp/ip-down \
-    $(LOCAL_PATH)/prebuilt/etc/ppp/ip-down-HUAWEI:system/etc/ppp/ip-down-HUAWEI \
-    $(LOCAL_PATH)/prebuilt/etc/ppp/ip-up:system/etc/ppp/ip-up \
-    $(LOCAL_PATH)/prebuilt/etc/ppp/ip-up-HUAWEI:system/etc/ppp/ip-up-HUAWEI \
-    $(LOCAL_PATH)/prebuilt/etc/ppp/ip-up-vpn:system/etc/ppp/ip-up-vpn \
-    $(LOCAL_PATH)/prebuilt/etc/ppp/options.huawei:system/etc/ppp/options.huawei \
-    $(LOCAL_PATH)/prebuilt/etc/ppp/pap-secrets:system/etc/ppp/pap-secrets
-   
+    $(LOCAL_PATH)/prebuilt/etc/init.d/05modules:system/etc/init.d/05modules
+
 # Build characteristics setting 
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -151,13 +138,13 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Extra packages to build for this device
 PRODUCT_PACKAGES += \
-    	librs_jni \
-	com.android.future.usb.accessory \
-	make_ext4fs \
-	setup_fs \
+        librs_jni \
+        com.android.future.usb.accessory \
+        make_ext4fs \
+        setup_fs \
         audio.a2dp.default \
         libaudioutils \
-	libinvensense_mpl \
+        libinvensense_mpl \
         blobpack_tf \
         l2ping \
         hcitool \
@@ -166,11 +153,11 @@ PRODUCT_PACKAGES += \
 
 # Propertys spacific for this device
 PRODUCT_PROPERTY_OVERRIDES := \
-    	wifi.interface=wlan0 \
-    	wifi.supplicant_scan_interval=15 \
-    	ro.opengles.version=131072 \
-	persist.sys.usb.config=mtp,adb \
-	dalvik.vm.dexopt-data-only=1
+        wifi.interface=wlan0 \
+        wifi.supplicant_scan_interval=15 \
+        ro.opengles.version=131072 \
+        persist.sys.usb.config=mtp,adb \
+        dalvik.vm.dexopt-data-only=1
 
 # Inherit tablet dalvik settings
 $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
