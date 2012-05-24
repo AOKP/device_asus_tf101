@@ -95,9 +95,6 @@ PRODUCT_COPY_FILES += \
 
 #Misc
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/app/LatinIME.apk:system/app/LatinIME.apk \
-    $(LOCAL_PATH)/prebuilt/app/LatinImeDictionaryPack.apk:system/app/LatinImeDictionaryPack.apk \
-    $(LOCAL_PATH)/prebuilt/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
     $(LOCAL_PATH)/prebuilt/xbin/remount:system/xbin/remount \
     $(LOCAL_PATH)/prebuilt/bin/ps3service:system/bin/ps3service \
     $(LOCAL_PATH)/prebuilt/xbin/rfcomm:system/xbin/rfcomm \
