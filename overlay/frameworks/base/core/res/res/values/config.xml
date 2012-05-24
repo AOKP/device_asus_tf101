@@ -243,4 +243,6 @@
      setting this to false will completely disable them -->
     <bool name="config_enableCrtAnimations">false</bool>
 
+    <string name="config_deviceKeyHandlerLib">/system/framework/com.cyanogenmod.asusec.jar</string>
+    <string name="config_deviceKeyHandlerClass">com.cyanogenmod.asusec.KeyHandler</string>
 </resources>
