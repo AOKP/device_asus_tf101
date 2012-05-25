@@ -4,5 +4,3 @@
 ro.wifi.country=EU
 ro.ethernet.interface=eth0
 ro.ethernet.autoEnable=yes
-picasso.3g=true
-ro.pad.features.modem=false
