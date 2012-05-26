@@ -84,7 +84,7 @@
     <bool translatable="false" name="config_wifi_dual_band_support">false</bool>
 
     <!-- Boolean indicating whether the wifi chipset has wifi direct support -->
-    <bool name="config_wifi_p2p_support">false</bool>
+    <bool name="config_wifi_p2p_support">true</bool>
     <!-- Device type information conforming to Annex B format in WiFi Direct specification.
          The default represents a dual-mode smartphone -->
     <string translatable="false" name="config_wifi_p2p_device_type">10-0050F204-4</string>
@@ -219,7 +219,7 @@
          Note: Disable SMS also disable voicemail waiting sms,
                cell broadcasting sms, and MMS. -->
     <!-- This device does not allow sms service. -->
-    <bool name="config_sms_capable">true</bool>
+    <bool name="config_sms_capable">false</bool>
 
     <!-- Number of database connections opened and managed by framework layer
          to handle queries on each database. -->

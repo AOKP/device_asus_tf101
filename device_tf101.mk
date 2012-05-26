@@ -64,8 +64,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/nvram_murata.txt:system/etc/nvram_murata.txt \
     $(LOCAL_PATH)/prebuilt/etc/nvram_4329.txt:system/etc/nvram_4329.txt \
     $(LOCAL_PATH)/prebuilt/etc/firmware/BCM4329B1_002.002.023.0797.0863.hcd:system/etc/firmware/BCM4329B1_002.002.023.0797.0863.hcd \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/BCM4329B1_002.002.023.0797.0879.hcd:system/etc/firmware/BCM4329B1_002.002.023.0797.0879.hcd \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/BCM4329B1_002.002.023.0797.0942.hcd:system/etc/firmware/BCM4329B1_002.002.023.0797.0942.hcd \
     $(LOCAL_PATH)/prebuilt/vendor/firmware/fw_bcmdhd.bin:system/vendor/firmware/fw_bcmdhd.bin \
     $(LOCAL_PATH)/prebuilt/vendor/firmware/fw_bcmdhd_apsta.bin:system/vendor/firmware/fw_bcmdhd_apsta.bin \
     $(LOCAL_PATH)/prebuilt/vendor/firmware/fw_bcmdhd_p2p.bin:system/vendor/firmware/fw_bcmdhd_p2p.bin \
@@ -138,9 +136,9 @@ $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
 $(call inherit-product-if-exists, vendor/asus/tf101/tf101-vendor.mk)
 
 # Device nameing
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=US_epad
 PRODUCT_NAME := full_tf101
 PRODUCT_DEVICE := tf101
-PRODUCT_MODEL := tf101
+PRODUCT_MODEL := EPAD
 PRODUCT_BRAND := asus
 PRODUCT_MANUFACTURER := asus
