@@ -41,7 +41,7 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 # Boot/Recovery image settings  
 BOARD_KERNEL_CMDLINE := 
 BOARD_KERNEL_BASE := 0x10000000
-BOARD_KERNEL_PAGESIZE :=
+BOARD_PAGE_SIZE := 0x00000800
 
 # EGL settings
 BOARD_EGL_CFG := device/asus/tf101/prebuilt/egl.cfg
