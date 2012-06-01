@@ -21,16 +21,8 @@ $(call inherit-product-if-exists, vendor/asus/tf101/tf101-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay
 
-# Prebuilt kernel location
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/asus/tf101/kernel
-else
-    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
 # Files needed for boot image
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel \
     $(LOCAL_PATH)/ramdisk/init.ventana.rc:root/init.ventana.rc \
     $(LOCAL_PATH)/ramdisk/init.ventana.usb.rc:root/init.ventana.usb.rc \
     $(LOCAL_PATH)/ramdisk/ueventd.ventana.rc:root/ueventd.ventana.rc
