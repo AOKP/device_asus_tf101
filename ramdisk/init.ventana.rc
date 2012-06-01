@@ -1,5 +1,4 @@
 import init.ventana.usb.rc
-import init.ventana.keyboard.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -8,7 +7,6 @@ on early-init
     mkdir /mnt/sdcard 0000 system system
     # for backwards compatibility
     symlink /mnt/sdcard /sdcard
-
 
     # create directory for mounting usb drives
     mkdir /Removable 0755 media_rw media_rw
@@ -109,10 +107,6 @@ on boot
     write /sys/class/gpio/gpio203/direction out
     chown root system /sys/class/gpio/gpio203/value
     chmod 0664 /sys/class/gpio/gpio203/value
-
-#NTFS exFAT support
-#    insmod /sbin/tntfs.ko
-#    insmod /sbin/texfat.ko
 
 # RIL
 # Define TCP buffer sizes for hspa networks
@@ -282,26 +276,6 @@ service flush-logs /system/bin/sh /data/data/com.asus.LogTool/files/flush-logs.s
     group root
     disabled
     oneshot
-#logtool service end
-
-# Mount usb drives as /usbdrive. Generally usb drives are formatted with FAT
-# filesystem, so we support FAT as of now.
-#on device-added-/sys/block/sda
-#    mount vfat /dev/block/sda /mnt/usbdrive
-
-#on device-removed-/sys/block/sda
-#    umount /mnt/usbdrive
-
-# Recovery daemon: configure MSC partition
-#service recoveryd /system/bin/recoveryd /dev/block/platform/sdhci-tegra.3/by-num/p5
-#    disabled
-#    class main
-#    user root
-#    group root
-#    oneshot
-
-#on property:sys.shutdown.requested=1recovery
-#    start recoveryd
 
 # Prepare TF service
 service tf_daemon /system/bin/tf_daemon -storageDir /data/tf -d
