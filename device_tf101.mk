@@ -21,16 +21,8 @@ $(call inherit-product-if-exists, vendor/asus/tf101/tf101-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay
 
-# Prebuilt kernel location
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := device/asus/tf101/kernel
-else
-    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
 # Files needed for boot image
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel \
     $(LOCAL_PATH)/ramdisk/init.ventana.rc:root/init.ventana.rc \
     $(LOCAL_PATH)/ramdisk/init.ventana.usb.rc:root/init.ventana.usb.rc \
     $(LOCAL_PATH)/ramdisk/ueventd.ventana.rc:root/ueventd.ventana.rc \
@@ -49,11 +41,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/usr/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
     $(LOCAL_PATH)/prebuilt/usr/idc/elantech_touchscreen.idc:system/usr/idc/elantech_touchscreen.idc \
     $(LOCAL_PATH)/prebuilt/usr/idc/panjit_touch.idc:system/usr/idc/panjit_touch.idc \
-
-# Any prebuilt kernel modules
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/lib/modules/battery_rvsd.ko:system/lib/modules/battery_rvsd.ko \
-    $(LOCAL_PATH)/prebuilt/lib/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
 
 # Localized input keychars and keylayout files
     $(call inherit-product, $(LOCAL_PATH)/keychars/l10n/l10n.mk)
