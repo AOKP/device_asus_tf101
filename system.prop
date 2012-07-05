@@ -4,3 +4,11 @@
 ro.wifi.country=EU
 ro.ethernet.interface=eth0
 ro.ethernet.autoEnable=yes
+
+# hardware info
+ro.device.cpu=1GHz NVIDIA Tegra 2 250 T20 
+ro.device.gpu=NVIDIA ULP GeForce
+ro.device.rear_cam=5 MP
+ro.device.front_cam=1.2 MP
+ro.device.screen_res=1280x800
+
