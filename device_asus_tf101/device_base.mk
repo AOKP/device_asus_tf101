@@ -39,7 +39,6 @@ PRODUCT_COPY_FILES := \
     device/asus/tf101/lib/hw/lights.ventana.so:system/lib/hw/lights.ventana.so \
     device/asus/tf101/lib/hw/sensors.ventana.so:system/lib/hw/sensors.ventana.so \
     device/asus/tf101/lib/libardrv_dynamic.so:system/lib/libardrv_dynamic.so \
-    device/asus/tf101/lib/libasound.so:system/lib/libasound.so \
     device/asus/tf101/lib/libcgdrv.so:system/lib/libcgdrv.so \
     device/asus/tf101/lib/libmllite.so:system/lib/libmllite.so \
     device/asus/tf101/lib/libmpl.so:system/lib/libmpl.so \
@@ -125,7 +124,6 @@ PRODUCT_COPY_FILES += \
     device/asus/tf101/bin/glgps:system/bin/glgps \
     device/asus/tf101/bin/wifimacwriter:system/bin/wifimacwriter \
     device/asus/tf101/data/srs_processing.cfg:system/data/srs_processing.cfg \
-    device/asus/tf101/etc/asound.conf:system/etc/asound.conf \
     device/asus/tf101/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
     device/asus/tf101/vold.fstab:system/etc/vold.fstab \
     device/asus/tf101/wifi/nvram_murata.txt:system/etc/nvram_murata.txt \
@@ -163,26 +161,6 @@ PRODUCT_COPY_FILES += \
     device/asus/tf101/vendor/firmware/fw_bcmdhd.bin:system/vendor/firmware/fw_bcmdhd.bin \
     device/asus/tf101/vendor/firmware/fw_bcmdhd_apsta.bin:system/vendor/firmware/fw_bcmdhd_apsta.bin \
     device/asus/tf101/vendor/firmware/fw_bcmdhd_p2p.bin:system/vendor/firmware/fw_bcmdhd_p2p.bin
-
-# ALSA Config files
-PRODUCT_COPY_FILES += \
-    device/asus/tf101/usr/share/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
-    device/asus/tf101/usr/share/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf \
-    device/asus/tf101/usr/share/alsa/pcm/center_lfe.conf:system/usr/share/alsa/pcm/center_lfe.conf \
-    device/asus/tf101/usr/share/alsa/pcm/default.conf:system/usr/share/alsa/pcm/default.conf \
-    device/asus/tf101/usr/share/alsa/pcm/dmix.conf:system/usr/share/alsa/pcm/dmix.conf \
-    device/asus/tf101/usr/share/alsa/pcm/dpl.conf:system/usr/share/alsa/pcm/dpl.conf \
-    device/asus/tf101/usr/share/alsa/pcm/dsnoop.conf:system/usr/share/alsa/pcm/dsnoop.conf \
-    device/asus/tf101/usr/share/alsa/pcm/front.conf:system/usr/share/alsa/pcm/front.conf \
-    device/asus/tf101/usr/share/alsa/pcm/iec958.conf:system/usr/share/alsa/pcm/iec958.conf \
-    device/asus/tf101/usr/share/alsa/pcm/modem.conf:system/usr/share/alsa/pcm/modem.conf \
-    device/asus/tf101/usr/share/alsa/pcm/rear.conf:system/usr/share/alsa/pcm/rear.conf \
-    device/asus/tf101/usr/share/alsa/pcm/side.conf:system/usr/share/alsa/pcm/side.conf \
-    device/asus/tf101/usr/share/alsa/pcm/surround40.conf:system/usr/share/alsa/pcm/surround40.conf \
-    device/asus/tf101/usr/share/alsa/pcm/surround41.conf:system/usr/share/alsa/pcm/surround41.conf \
-    device/asus/tf101/usr/share/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
-    device/asus/tf101/usr/share/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
-    device/asus/tf101/usr/share/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf
 
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
@@ -226,7 +204,6 @@ PRODUCT_PACKAGES := \
     libaudioutils \
     libinvensense_mpl \
     blobpack_tf
-#    AutoParts
 
 PRODUCT_CHARACTERISTICS := tablet
 
