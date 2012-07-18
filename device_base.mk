@@ -98,7 +98,8 @@ PRODUCT_COPY_FILES := \
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
     device/asus/tf101/etc/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
-    device/asus/tf101/etc/bluetooth/bdaddr:system/etc/bluetooth/bdaddr
+    device/asus/tf101/etc/bluetooth/bdaddr:system/etc/bluetooth/bdaddr \
+    system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf
 
 # Modules
 PRODUCT_COPY_FILES += \
@@ -159,6 +160,11 @@ PRODUCT_COPY_FILES += \
 # Inherit bcm4329 stuff
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
+# Sound
+PRODUCT_COPY_FILES += \
+    device/asus/tf101/media_codecs.xml:system/etc/media_codecs.xml
+    device/asus/tf101/mixer_paths.xml:system/etc/mixer_paths.xml
+
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=15 \
@@ -212,10 +218,6 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # media config xml file
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/etc/media_profiles.xml:system/etc/media_profiles.xml
-
-# Bluetooth config file
-PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf
 
 $(call inherit-product-if-exists, vendor/asus/tf101/device-vendor.mk)
 
