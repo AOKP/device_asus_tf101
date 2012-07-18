@@ -1,4 +1,4 @@
-# Copyright (C) 2011 Texas Instruments
+# Copyright (C) 2012 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,18 +16,39 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := audio.primary.tegra
+LOCAL_SRC_FILES := \
+    AudioPolicyManager.cpp
 
+LOCAL_SHARED_LIBRARIES := \
+    libcutils \
+    libutils
+
+LOCAL_STATIC_LIBRARIES := \
+    libmedia_helper
+
+LOCAL_WHOLE_STATIC_LIBRARIES := \
+    libaudiopolicy_legacy
+
+LOCAL_MODULE := audio_policy.tegra
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-
-LOCAL_SRC_FILES := audio_hw.c
-
-LOCAL_C_INCLUDES += \
-	external/tinyalsa/include \
-	system/media/audio_utils/include \
-	system/media/audio_effects/include
-
-LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa libaudioutils libdl
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
+
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := audio.primary.tegra
+LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
+LOCAL_SRC_FILES := \
+	audio_hw.c \
+	audio_route.c
+LOCAL_C_INCLUDES += \
+	external/tinyalsa/include \
+	external/expat/lib \
+	$(call include-path-for, audio-utils)
+LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa libaudioutils libexpat
+LOCAL_MODULE_TAGS := optional
+
+include $(BUILD_SHARED_LIBRARY)
+

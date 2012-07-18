@@ -30,7 +30,6 @@ PRODUCT_COPY_FILES := \
     device/asus/tf101/lib/egl/libGLESv1_CM_tegra.so:system/lib/egl/libGLESv1_CM_tegra.so \
     device/asus/tf101/lib/egl/libGLESv2_perfhud.so:system/lib/egl/libGLESv2_perfhud.so \
     device/asus/tf101/lib/egl/libGLESv2_tegra.so:system/lib/egl/libGLESv2_tegra.so \
-    device/asus/tf101/lib/hw/audio_policy.tegra.so:system/lib/hw/audio_policy.tegra.so \
     device/asus/tf101/lib/hw/camera.tegra.so:system/lib/hw/camera.tegra.so \
     device/asus/tf101/lib/hw/gps.ventana.so:system/lib/hw/gps.ventana.so \
     device/asus/tf101/lib/hw/gralloc.tegra.so:system/lib/hw/gralloc.tegra.so \
