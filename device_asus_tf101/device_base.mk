@@ -156,10 +156,10 @@ PRODUCT_COPY_FILES += \
     device/asus/tf101/etc/firmware/nvmm_wavdec.axf:system/etc/firmware/nvmm_wavdec.axf \
     device/asus/tf101/etc/firmware/nvmm_wmadec.axf:system/etc/firmware/nvmm_wmadec.axf \
     device/asus/tf101/etc/firmware/nvmm_wmaprodec.axf:system/etc/firmware/nvmm_wmaprodec.axf \
-    device/asus/tf101/etc/firmware/nvrm_avp.bin:system/etc/firmware/nvrm_avp.bin \
-    device/asus/tf101/vendor/firmware/fw_bcmdhd.bin:system/vendor/firmware/fw_bcmdhd.bin \
-    device/asus/tf101/vendor/firmware/fw_bcmdhd_apsta.bin:system/vendor/firmware/fw_bcmdhd_apsta.bin \
-    device/asus/tf101/vendor/firmware/fw_bcmdhd_p2p.bin:system/vendor/firmware/fw_bcmdhd_p2p.bin
+    device/asus/tf101/etc/firmware/nvrm_avp.bin:system/etc/firmware/nvrm_avp.bin
+
+# Inherit bcm4329 stuff
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
@@ -216,7 +216,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth config file
 PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf \
+    system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf
 
 $(call inherit-product-if-exists, vendor/asus/tf101/device-vendor.mk)
 
