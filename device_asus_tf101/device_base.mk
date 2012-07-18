@@ -21,8 +21,6 @@ endif
 
 DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 
-TARGET_NO_RECOVERY := true
-
 PRODUCT_COPY_FILES := \
     $(LOCAL_KERNEL):kernel \
     device/asus/tf101/lib/egl/libEGL_perfhud.so:system/lib/egl/libEGL_perfhud.so \
