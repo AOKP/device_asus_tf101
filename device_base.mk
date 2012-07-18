@@ -162,9 +162,9 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329
 
 # Sound
 PRODUCT_COPY_FILES += \
-    device/asus/tf101/media_codecs.xml:system/etc/media_codecs.xml \
-    device/asus/tf101/mixer_paths.xml:system/etc/mixer_paths.xml \
-	device/asus/tf101/audio_policy.conf:system/etc/audio_policy.conf
+    device/asus/tf101/etc/media_codecs.xml:system/etc/media_codecs.xml \
+    device/asus/tf101/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
+	device/asus/tf101/etc/audio_policy.conf:system/etc/audio_policy.conf
 
 
 PRODUCT_PROPERTY_OVERRIDES := \
