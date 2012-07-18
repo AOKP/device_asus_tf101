@@ -202,7 +202,8 @@ PRODUCT_PACKAGES := \
     libaudioutils \
     libinvensense_mpl \
     blobpack_tf \
-	audio.primary.tegra
+	audio.primary.tegra \
+	audio_policy.tegra
 
 PRODUCT_CHARACTERISTICS := tablet
 
