@@ -1,0 +1,286 @@
+diff --git a/core/java/android/view/WindowManagerPolicy.java b/core/java/android/view/WindowManagerPolicy.java
+index 09948b8..365f97f 100644
+--- a/core/java/android/view/WindowManagerPolicy.java
++++ b/core/java/android/view/WindowManagerPolicy.java
+@@ -392,6 +392,7 @@ public interface WindowManagerPolicy {
+         public void switchKeyboardLayout(int deviceId, int direction);
+ 
+         public void shutdown();
++        public void reboot(String reason);
+         public void rebootSafeMode();
+     }
+ 
+diff --git a/core/res/res/values/arrays.xml b/core/res/res/values/arrays.xml
+index b425ad7..a5328c5 100644
+--- a/core/res/res/values/arrays.xml
++++ b/core/res/res/values/arrays.xml
+@@ -407,4 +407,15 @@
+         <item>@null</item>
+     </array>
+ 
++    <!-- reboot options -->
++    <string-array name="reboot_options">
++		<item>@string/reboot</item>
++		<item>@string/reboot_recovery</item>
++    </string-array>
++
++    <!-- reboot values -->
++    <string-array name="reboot_values">
++		<item></item>
++		<item>recovery</item>
++    </string-array>
+ </resources>
+diff --git a/core/res/res/values/public.xml b/core/res/res/values/public.xml
+index 0bae0cb..9eff8ae 100644
+--- a/core/res/res/values/public.xml
++++ b/core/res/res/values/public.xml
+@@ -1202,6 +1202,8 @@
+   <java-symbol type="array" name="lockscreen_targets_when_silent" />
+   <java-symbol type="array" name="lockscreen_targets_when_soundon" />
+   <java-symbol type="array" name="lockscreen_targets_with_camera" />
++  <java-symbol type="array" name="reboot_options" />
++  <java-symbol type="array" name="reboot_values" />
+   <java-symbol type="attr" name="actionModePopupWindowStyle" />
+   <java-symbol type="attr" name="dialogCustomTitleDecorLayout" />
+   <java-symbol type="attr" name="dialogTitleDecorLayout" />
+@@ -1227,6 +1229,7 @@
+   <java-symbol type="drawable" name="ic_jog_dial_vibrate_on" />
+   <java-symbol type="drawable" name="ic_lock_airplane_mode" />
+   <java-symbol type="drawable" name="ic_lock_airplane_mode_off" />
++  <java-symbol type="drawable" name="ic_lock_reboot" />
+   <java-symbol type="drawable" name="ic_menu_cc" />
+   <java-symbol type="drawable" name="jog_tab_bar_left_unlock" />
+   <java-symbol type="drawable" name="jog_tab_bar_right_sound_off" />
+@@ -1366,6 +1369,7 @@
+   <java-symbol type="string" name="lockscreen_too_many_failed_pin_attempts_dialog_message" />
+   <java-symbol type="string" name="lockscreen_unlock_label" />
+   <java-symbol type="string" name="status_bar_device_locked" />
++  <java-symbol type="string" name="reboot" />
+   <java-symbol type="style" name="Animation.LockScreen" />
+   <java-symbol type="style" name="Theme.Dialog.RecentApplications" />
+   <java-symbol type="style" name="Theme.ExpandedMenu" />
+@@ -1543,6 +1547,7 @@
+   <java-symbol type="string" name="vpn_title" />
+   <java-symbol type="string" name="vpn_title_long" />
+   <java-symbol type="string" name="wallpaper_binding_label" />
++  <java-symbol type="string" name="reboot_progress" />
+   <java-symbol type="style" name="Theme.Dialog.AppError" />
+   <java-symbol type="style" name="Theme.Toast" />
+   <java-symbol type="xml" name="storage_list" />
+diff --git a/core/res/res/values/strings.xml b/core/res/res/values/strings.xml
+index 325b6fe..228c845 100755
+--- a/core/res/res/values/strings.xml
++++ b/core/res/res/values/strings.xml
+@@ -3576,4 +3576,19 @@
+ 
+     <!-- "Done" button for MediaRouter chooser dialog when grouping routes. [CHAR LIMIT=NONE] -->
+     <string name="media_route_chooser_grouping_done">Done</string>
++
++    <!-- Reboot -->
++    <string name="reboot">Reboot</string>
++
++    <!-- Reboot recovery option -->
++    <string name="reboot_recovery">Recovery</string>
++
++    <!-- Reboot recovery option -->
++    <string name="reboot_download">Download</string>
++
++    <!-- Reboot recovery option -->
++    <string name="reboot_bootloader">Bootloader</string>
++
++    <!-- Rebooting message -->
++    <string name="reboot_progress">Your device is rebooting</string>
+ </resources>
+diff --git a/policy/src/com/android/internal/policy/impl/GlobalActions.java b/policy/src/com/android/internal/policy/impl/GlobalActions.java
+index fc187ce..144d358 100644
+--- a/policy/src/com/android/internal/policy/impl/GlobalActions.java
++++ b/policy/src/com/android/internal/policy/impl/GlobalActions.java
+@@ -53,6 +53,7 @@ import android.widget.AdapterView;
+ import android.widget.BaseAdapter;
+ import android.widget.ImageView;
+ import android.widget.TextView;
++import android.widget.Toast;
+ 
+ import java.util.ArrayList;
+ import java.util.List;
+@@ -89,6 +90,8 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
+ 
+     private IWindowManager mIWindowManager;
+ 
++    private static int rebootIndex = 0;
++
+     /**
+      * @param context everything needs a context :(
+      */
+@@ -224,6 +227,28 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
+                 }
+             });
+ 
++        // next: reboot
++        mItems.add(
++                new SinglePressAction(
++                        com.android.internal.R.drawable.ic_lock_reboot,
++                        com.android.internal.R.string.reboot) {
++
++                    @Override
++                    public boolean showDuringKeyguard() {
++                        return true;
++                    }
++
++                    @Override
++                    public boolean showBeforeProvisioning() {
++                        return true;
++                    }
++
++                    @Override
++                    public void onPress() {
++                        createRebootDialog().show();
++                    }
++                });
++
+         // next: airplane mode
+         mItems.add(mAirplaneModeOn);
+ 
+@@ -816,4 +841,38 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
+         }
+         return mIWindowManager;
+     }
++
++    private AlertDialog createRebootDialog() {
++        final String[] rebootOptions = mContext.getResources().getStringArray(R.array.reboot_options);
++        final String[] rebootReasons = mContext.getResources().getStringArray(R.array.reboot_values);
++
++        AlertDialog d = new AlertDialog.Builder(mContext)
++                .setSingleChoiceItems(rebootOptions, 0,
++                        new DialogInterface.OnClickListener() {
++                            @Override
++                            public void onClick(DialogInterface dialog, int which) {
++                                rebootIndex = which;
++                            }
++                        })
++                .setNegativeButton(android.R.string.cancel,
++                        new DialogInterface.OnClickListener() {
++
++                            @Override
++                            public void onClick(DialogInterface dialog, int which) {
++                                dialog.dismiss();
++                            }
++                        })
++                .setPositiveButton(R.string.reboot, new DialogInterface.OnClickListener() {
++
++                    @Override
++                    public void onClick(DialogInterface dialog, int which) {
++                        mWindowManagerFuncs.reboot(rebootReasons[rebootIndex]);
++                    }
++                }).create();
++
++        d.getListView().setItemsCanFocus(true);
++        d.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_DIALOG);
++
++        return d;
++    }
+ }
+diff --git a/services/input/Android.mk b/services/input/Android.mk
+index 159800f..f588b8b 100644
+--- a/services/input/Android.mk
++++ b/services/input/Android.mk
+@@ -44,6 +44,11 @@ LOCAL_MODULE:= libinput
+ 
+ LOCAL_MODULE_TAGS := optional
+ 
++ifeq ($(TARGET_USES_TF101_LID_HACK),true)
++    $(info WARNING: TF101 lid hack can cause various weird side effects on other devices! Use with caution)
++    LOCAL_CFLAGS += -DTF101_LID_HACK
++endif
++
+ include $(BUILD_SHARED_LIBRARY)
+ 
+ 
+diff --git a/services/input/InputReader.cpp b/services/input/InputReader.cpp
+index cd6a2ec..fe68e33 100644
+--- a/services/input/InputReader.cpp
++++ b/services/input/InputReader.cpp
+@@ -19,7 +19,7 @@
+ //#define LOG_NDEBUG 0
+ 
+ // Log debug messages for each raw event received from the EventHub.
+-#define DEBUG_RAW_EVENTS 0
++#define DEBUG_RAW_EVENTS 0 
+ 
+ // Log debug messages about touch screen filtering hacks.
+ #define DEBUG_HACKS 0
+@@ -1829,7 +1829,17 @@ uint32_t SwitchInputMapper::getSources() {
+ void SwitchInputMapper::process(const RawEvent* rawEvent) {
+     switch (rawEvent->type) {
+     case EV_SW:
+-        processSwitch(rawEvent->when, rawEvent->code, rawEvent->value);
++#ifdef TF101_LID_HACK
++        if ( (rawEvent->deviceId == 2) && (rawEvent->code == 0) ) {
++            uint32_t newValue = rawEvent->value == 0 ? 1 : 0;
++            ALOGD("Flipping TF101 lid event! New code = %d", newValue);
++            processSwitch(rawEvent->when, rawEvent->code, newValue);
++        } else {
++            processSwitch(rawEvent->when, rawEvent->code, rawEvent->value);
++        }
++#else
++            processSwitch(rawEvent->when, rawEvent->code, rawEvent->value);
++#endif
+         break;
+     }
+ }
+@@ -1840,7 +1850,16 @@ void SwitchInputMapper::processSwitch(nsecs_t when, int32_t switchCode, int32_t
+ }
+ 
+ int32_t SwitchInputMapper::getSwitchState(uint32_t sourceMask, int32_t switchCode) {
+-    return getEventHub()->getSwitchState(getDeviceId(), switchCode);
++    int32_t oldCode = getEventHub()->getSwitchState(getDeviceId(), switchCode);
++#ifdef TF101_LID_HACK
++    if (switchCode == SW_LID) {
++        return oldCode == 0 ? 1 : 0;
++    } else {
++        return oldCode;
++    }
++#else
++    return oldCode;
++#endif
+ }
+ 
+ 
+diff --git a/services/java/com/android/server/pm/ShutdownThread.java b/services/java/com/android/server/pm/ShutdownThread.java
+index 69406c8..e9b89bb 100644
+--- a/services/java/com/android/server/pm/ShutdownThread.java
++++ b/services/java/com/android/server/pm/ShutdownThread.java
+@@ -205,11 +205,15 @@ public final class ShutdownThread extends Thread {
+             sIsStarted = true;
+         }
+ 
++        final int shutdownMessageId = mRebootReason == null
++                ? com.android.internal.R.string.shutdown_progress
++                : com.android.internal.R.string.reboot_progress;
++
+         // throw up an indeterminate system dialog to indicate radio is
+         // shutting down.
+         ProgressDialog pd = new ProgressDialog(context);
+-        pd.setTitle(context.getText(com.android.internal.R.string.power_off));
+-        pd.setMessage(context.getText(com.android.internal.R.string.shutdown_progress));
++        //pd.setTitle(context.getText(com.android.internal.R.string.power_off));
++        pd.setMessage(context.getText(shutdownMessageId));
+         pd.setIndeterminate(true);
+         pd.setCancelable(false);
+         pd.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
+diff --git a/services/java/com/android/server/wm/WindowManagerService.java b/services/java/com/android/server/wm/WindowManagerService.java
+index 7011343..148af9f 100755
+--- a/services/java/com/android/server/wm/WindowManagerService.java
++++ b/services/java/com/android/server/wm/WindowManagerService.java
+@@ -5152,6 +5152,11 @@ public class WindowManagerService extends IWindowManager.Stub
+         ShutdownThread.shutdown(mContext, true);
+     }
+ 
++    @Override
++    public void reboot(String reason) {
++        ShutdownThread.reboot(mContext, reason, false);
++    }
++
+     // Called by window manager policy.  Not exposed externally.
+     @Override
+     public void rebootSafeMode() {

@@ -24,8 +24,6 @@
 # by BoardConfigVendor.mk
 USE_CAMERA_STUB := true
 
-# Use a smaller subset of system fonts to keep image size lower
-SMALLER_FONT_FOOTPRINT := true
 # Use the non-open-source parts, if they're present
 -include vendor/asus/tf101/BoardConfigVendor.mk
 
@@ -47,28 +45,20 @@ BOARD_PAGE_SIZE := 0x00000800
 
 TARGET_NO_RADIOIMAGE := true
 
-#TARGET_BOARD_INFO_FILE := device/asus/tf101/board-info.txt
-
-BOARD_EGL_CFG := device/asus/tf101/egl.cfg
+BOARD_EGL_CFG := device/asus/tf101/prebuilt/etc/egl.cfg
 
 BOARD_USES_HGL := true
 BOARD_USES_OVERLAY := true
 USE_OPENGL_RENDERER := true
 
-#TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
-#TARGET_RECOVERY_UI_LIB := librecovery_ui_tf101
-
 # device-specific extensions to the updater binary
-#TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_tf101
-TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
+TARGET_RELEASETOOLS_EXTENSIONS := device/asus/tf101
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 5242880
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 536870912
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 14372306944
 BOARD_FLASH_BLOCK_SIZE := 4096
-
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
 
 # Wifi related defines
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
@@ -82,14 +72,13 @@ WIFI_DRIVER_FW_PATH_STA     := "/system/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_P2P     := "/system/vendor/firmware/fw_bcmdhd_p2p.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
 
-#Custom Recovery UI
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/asus/tf101/recovery_ui.c
-
+# Recovery
+TARGET_RECOVERY_UI_LIB := librecovery_ui_tf101
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := false
-USE_PROPRIETARY_AUDIO_EXTENSIONS := true
+USE_PROPRIETARY_AUDIO_EXTENSIONS := false
 
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
@@ -101,7 +90,6 @@ TARGET_HAS_DOCK_BATTERY := true
 
 # Custom Tools
 TARGET_RECOVERY_PRE_COMMAND := "echo 'boot-recovery' > /dev/block/mmcblk0p3; sync"
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/asus/tf101/releasetools/tf101_ota_from_target_files
 
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
@@ -115,3 +103,6 @@ USE_ALL_OPTIMIZED_STRING_FUNCS := true
 
 # Camera
 TARGET_USES_ICS_CAMERA_BLOB := true
+
+# Lid
+TARGET_USES_TF101_LID_HACK := true

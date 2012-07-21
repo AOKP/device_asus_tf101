@@ -1,18 +1,15 @@
 import init.ventana.usb.rc
-import init.ventana.keyboard.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
 
     export EXTERNAL_STORAGE /storage/sdcard0
+    export SECONDARY_STORAGE /storage/sdcard1
     mkdir /storage 0050 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
     # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
-
-    # create directory for mounting usb drives
-    mkdir /Removable 0755 media_rw media_rw
 
 on fs
     mount_all /fstab.ventana
@@ -20,10 +17,10 @@ on fs
     mount tmpfs tmpfs /Removable mode=0755,gid=1000
 
     # temp fix for external storage mounts
-    mkdir /Removable/MicroSD 0666 system system
-    mkdir /Removable/SD 0666 system system
-    mkdir /Removable/USBdisk1 0666 system system
-    mkdir /Removable/USBdisk2 0666 system system
+    mkdir /storage/sdcard1 0000 system system
+    mkdir /storage/sdcard2 0000 system system
+    mkdir /storage/usbdisk1 0000 system system
+    mkdir /storage/usbdisk2 0000 system system
 
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -99,24 +96,19 @@ on boot
     write /data/misc/wminput/connected 0
     chmod 0666 /data/misc/wminput/connected
 
-#GPS
+# GPS
     mkdir /data/gps
-    chown system system /data/gps
+    chown gps system /data/gps
     chmod 770 /data/gps
-    chown root system /dev/ttyHS1
+    chown gps system /dev/ttyHS1
     chmod 0664 /dev/ttyHS1
-    chown root system /dev/socket/gps
-    chmod 0666 /dev/socket/gps
 
 # GPS init
     write /sys/class/gpio/export 203
     write /sys/class/gpio/gpio203/value 0
     write /sys/class/gpio/gpio203/direction out
-    chown root system /sys/class/gpio/gpio203/value
+    chown gps system /sys/class/gpio/gpio203/value
     chmod 0664 /sys/class/gpio/gpio203/value
-
-#NTFS exFAT support
-    insmod /sbin/texfat.ko
 
 # RIL
 # Define TCP buffer sizes for hspa networks
@@ -133,10 +125,6 @@ service wifimacwriter /system/bin/wifimacwriter
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin
-#   we will start as root and wpa_supplicant will switch to user wifi
-#   after setting up the capabilities required for WEXT
-#   user wifi
-#   group wifi inet keystore
     class main
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
@@ -181,12 +169,10 @@ service iprenew_bnep0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-#Sensor: load calibration files.
-    service sensors-config /system/bin/sensors-config
+service sensors-config /system/bin/sensors-config
     class main
     user root
     oneshot
-#Sensor load calibration files end
 
 # create virtual SD card at /storage/sdcard0, based on the /data/media directory
 # daemon will drop to user/group system/media_rw after initializing
@@ -209,54 +195,8 @@ service hciattach /system/bin/brcm_patchram_plus --enable_hci --scopcm=0,2,0,0,0
     group system bluetooth net_bt_admin misc
     disabled
 
-# Start GPS daemon
+service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
   on boot
-  service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
-  user root
+  user gps
   group root 
   class late_start
-
-# Mount usb drives as /usbdrive. Generally usb drives are formatted with FAT
-# filesystem, so we support FAT as of now.
-#on device-added-/sys/block/sda
-#    mount vfat /dev/block/sda /mnt/usbdrive
-
-#on device-removed-/sys/block/sda
-#    umount /mnt/usbdrive
-
-# Recovery daemon: configure MSC partition
-#service recoveryd /system/bin/recoveryd /dev/block/platform/sdhci-tegra.3/by-num/p5
-#    disabled
-#    class main
-#    user root
-#    group root
-#    oneshot
-
-#on property:sys.shutdown.requested=1recovery
-#    start recoveryd
-
-# Prepare TF service
-service tf_daemon /system/bin/tf_daemon -storageDir /data/tf -d
-    disabled
-    class main
-    user root
-    group shell
-    oneshot
-
-# Create data directory and start service
-on property:tf.enable=y
-    mkdir /data/tf
-    start tf_daemon
-
-service BtService /system/bin/sh /system/etc/BtService.sh
-     user root
-     group root
-     disabled
-     oneshot
-
-service ps3service /system/bin/ps3service
-    class main
-    user root
-    group root
-    disabled
-    oneshot

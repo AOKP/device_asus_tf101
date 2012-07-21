@@ -1,0 +1,10 @@
+================================================================================================
+| Project              | Patch                          | Authors                              |
+================================================================================================
+| frameworks_base      | ICS camera API support         | rmcc (CyanogenMod)                   |
+| frameworks_av        | Tegra OMX support              | arcee (CyanogenMod), K900            |
+| frameworks_base      | Dock lid support (JB code)     | K900                                 |
+| frameworks_base      | Reboot options in power menu   | romanbb (AOKP)                       |
+| frameworks_base      | Dock battery support           | Donald Munn (TeamEOS)                |
+| frameworks_base      | Dock keys and touchpad support | Donald Munn (TeamEOS)                |
+| build                | Allow APKs as prebuilt         | K900                                 |
