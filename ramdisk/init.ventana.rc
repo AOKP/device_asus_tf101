@@ -195,8 +195,8 @@ service hciattach /system/bin/brcm_patchram_plus --enable_hci --scopcm=0,2,0,0,0
     group system bluetooth net_bt_admin misc
     disabled
 
-service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
   on boot
+  service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
   user gps
   group root 
   class late_start
