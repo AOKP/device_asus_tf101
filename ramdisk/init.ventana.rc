@@ -118,6 +118,11 @@ on boot
     setprop net.tcp.buffersize.hsdpa 4096,87380,524288,4096,87380,524288
     setprop net.tcp.buffersize.hsupa 4096,87380,524288,4096,87380,524288
 
+service gps-hack /system/bin/mksh /system/bin/glgps-hack
+    class main
+    user root
+    oneshot
+
 # Write Wi-Fi Mac
 service wifimacwriter /system/bin/wifimacwriter
     class main
@@ -194,9 +199,3 @@ service hciattach /system/bin/brcm_patchram_plus --enable_hci --scopcm=0,2,0,0,0
     user root
     group system bluetooth net_bt_admin misc
     disabled
-
-  on boot
-  service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
-  user gps
-  group root 
-  class late_start

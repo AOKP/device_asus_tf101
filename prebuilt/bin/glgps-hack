@@ -1,0 +1,16 @@
+#!/bin/sh
+if test -f /data/local/glgps.pid; then
+	echo "Killing GLGPS..."
+	kill $(cat /data/local/glgps.pid)
+	echo "Killed!"
+fi
+echo "Starting glgps..."
+glgps -p /data/local/glgps.pid -d /system/etc/gps/gpsconfig.xml 
+echo "GLGPS detached..."
+while ! test -e /dev/socket/gps; do done
+echo "Socket created!"
+sleep 2
+echo "Running chmod..."
+chmod 0666 /dev/socket/gps
+echo "Done!"
+

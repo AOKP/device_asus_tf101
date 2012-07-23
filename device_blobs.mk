@@ -5,6 +5,7 @@ PRODUCT_COPY_FILES += \
 $(LOCAL_PATH)/prebuilt/bin/glgps:system/bin/glgps \
 $(LOCAL_PATH)/prebuilt/bin/sensors-config:system/bin/sensors-config \
 $(LOCAL_PATH)/prebuilt/bin/wifimacwriter:system/bin/wifimacwriter \
+$(LOCAL_PATH)/prebuilt/bin/glgps-hack:system/bin/glgps-hack \
 $(LOCAL_PATH)/prebuilt/data/srs_processing.cfg:system/data/srs_processing.cfg \
 $(LOCAL_PATH)/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
 $(LOCAL_PATH)/prebuilt/etc/bluetooth/bdaddr:system/etc/bluetooth/bdaddr \
