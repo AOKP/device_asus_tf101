@@ -399,7 +399,7 @@ key SPACE {
     alt, ctrl, meta:                    none
 }
 
-key EUROPE_2 {
+key CONTACTS {
     label, number:                      '\\'
     base:                               '\\'
     shift:                              '|'

@@ -18,9 +18,6 @@ DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 # Proprietaries
 -include $(LOCAL_PATH)/device_blobs.mk
 
-# Preroot
-$(call inherit-product-if-exists, $(LOCAL_PATH)/supersu/device_supersu.mk)
-
 # Bluetooth configuration file
 PRODUCT_COPY_FILES += \
     system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf
@@ -30,8 +27,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/fstab.ventana:root/fstab.ventana \
     $(LOCAL_PATH)/ramdisk/init.ventana.rc:root/init.ventana.rc \
     $(LOCAL_PATH)/ramdisk/init.ventana.usb.rc:root/init.ventana.usb.rc \
-    $(LOCAL_PATH)/ramdisk/ueventd.ventana.rc:root/ueventd.ventana.rc \
-	$(LOCAL_PATH)/kernel:kernel
+    $(LOCAL_PATH)/ramdisk/ueventd.ventana.rc:root/ueventd.ventana.rc
 
 # Inherit bcm4329 stuff
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
@@ -63,6 +59,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+    $(LOCAL_PATH)/asusdec/com.cyanogenmod.asusdec.xml:system/etc/permissions/com.cyanogenmod.asusdec.xml
 
 PRODUCT_PACKAGES := \
     audio.a2dp.default \
@@ -78,11 +75,13 @@ PRODUCT_PACKAGES := \
     libinvensense_mpl \
     blobpack_tf \
     audio.primary.tegra \
-    audio_policy.tegra
-
+    audio_policy.tegra \
+	com.cyanogenmod.asusdec \
+	libasusdec_jni 
 PRODUCT_CHARACTERISTICS := tablet
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 $(call inherit-product-if-exists, vendor/asus/tf101/device-vendor.mk)
+$(call inherit-product-if-exists, vendor/aokp/configs/common.mk)
