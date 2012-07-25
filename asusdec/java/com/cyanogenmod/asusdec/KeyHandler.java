@@ -82,6 +82,7 @@ public final class KeyHandler implements DeviceKeyHandler {
 
     private void toast(String text) {
         // TODO make those translate-able
+        // TODO find out how to make global toasts
         Toast.makeText(mContext, text, Toast.LENGTH_SHORT).show();
     }
 
