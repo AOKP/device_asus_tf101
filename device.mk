@@ -77,7 +77,8 @@ PRODUCT_PACKAGES := \
     audio.primary.tegra \
     audio_policy.tegra \
 	com.cyanogenmod.asusdec \
-	libasusdec_jni 
+	libasusdec_jni \
+	tinyplay tinymix
 PRODUCT_CHARACTERISTICS := tablet
 
 # we have enough storage space to hold precise GC data

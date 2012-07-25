@@ -37,7 +37,7 @@ import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Slog;
 import android.view.KeyEvent;
-
+import android.widget.Toast;
 import com.android.internal.os.DeviceKeyHandler;
 
 public final class KeyHandler implements DeviceKeyHandler {
@@ -77,16 +77,12 @@ public final class KeyHandler implements DeviceKeyHandler {
         mAutomaticAvailable = context.getResources().getBoolean(
                 com.android.internal.R.bool.config_automatic_brightness_available);
 
-/*        try {
-            mDeviceSettingsContext = context.createPackageContext(
-                    "com.cyanogenmod.settings.device", 0);
-            SharedPreferences prefs = mDeviceSettingsContext.getSharedPreferences(
-                    PREFS_FILE, Context.MODE_WORLD_READABLE);
-            mTouchpadEnabled = prefs.getBoolean(PREFS_TOUCHPAD_STATUS, true);
-        } catch (NameNotFoundException e) {
-            Slog.e(TAG, "Could not find device com.cyanogenmod.settings.device", e);
-        }*/
         mTouchpadEnabled = true;
+    }
+
+    private void toast(String text) {
+        // TODO make those translate-able
+        Toast.makeText(mContext, text, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -139,10 +135,12 @@ public final class KeyHandler implements DeviceKeyHandler {
 
         if (state == WifiManager.WIFI_STATE_ENABLING
                 || state == WifiManager.WIFI_STATE_DISABLING) {
+            toast("WiFi switching right now...");
             return;
         }
         if (apState == WifiManager.WIFI_AP_STATE_ENABLING
                 || apState == WifiManager.WIFI_AP_STATE_DISABLING) {
+            toast("WiFi AP switching right now...");
             return;
         }
 
@@ -150,10 +148,12 @@ public final class KeyHandler implements DeviceKeyHandler {
                 || apState == WifiManager.WIFI_AP_STATE_ENABLED) {
             mWifiManager.setWifiEnabled(false);
             mWifiManager.setWifiApEnabled(null, false);
+            toast("WiFi OFF");
 
         } else if (state == WifiManager.WIFI_STATE_DISABLED
                 && apState == WifiManager.WIFI_AP_STATE_DISABLED) {
             mWifiManager.setWifiEnabled(true);
+            toast("WiFi ON");
         }
     }
 
@@ -170,28 +170,30 @@ public final class KeyHandler implements DeviceKeyHandler {
         }
         if (state == BluetoothAdapter.STATE_OFF) {
             mBluetoothAdapter.enable();
+            toast("Bluetooth ON");
         }
         if (state == BluetoothAdapter.STATE_ON) {
             mBluetoothAdapter.disable();
+            toast("Bluetooth OFF");
         }
     }
 
     public void enableTouchpad(boolean enable) {
-        if (mDeviceSettingsContext != null) {
-            SharedPreferences prefs = mDeviceSettingsContext.getSharedPreferences(
-                    PREFS_FILE, Context.MODE_WORLD_READABLE);
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean(PREFS_TOUCHPAD_STATUS, enable);
-            editor.commit();
-        }
-
+        // TODO save it somewhere
         nativeToggleTouchpad(enable);
     }
 
     private void toggleTouchpad() {
         mTouchpadEnabled = !mTouchpadEnabled;
+        if (mTouchpadEnabled) {
+            toast("Touchpad ON");
+        } else {
+            toast("Touchpad OFF");
+        }
         enableTouchpad(mTouchpadEnabled);
     }
+
+    // TODO make a volume-style slider for brightness
 
     private void brightnessDown() {
         setBrightnessMode(Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);

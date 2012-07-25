@@ -94,3 +94,5 @@ TARGET_RECOVERY_PRE_COMMAND := "echo 'boot-recovery' > /dev/block/mmcblk0p3; syn
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/asus/tf101
 
+# Dock
+TARGET_ASUSDEC_DEVICE_NODE := /dev/asusec
