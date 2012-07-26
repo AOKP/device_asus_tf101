@@ -213,35 +213,4 @@
     <!-- Base "touch slop" value used by ViewConfiguration as a
          movement threshold where scrolling should begin. -->
     <dimen name="config_viewConfigurationTouchSlop">8dp</dimen>
-
-    <!-- Package name providing network location support. -->
-    <string name="config_networkLocationProviderPackageName" translatable="false">com.google.android.location</string>
-
-    <!-- Package name providing geocoder API support. -->
-    <string name="config_geocodeProviderPackageName" translatable="false">com.google.android.location</string>
-
-    <!-- Boolean indicating whether the device has a dock battery -->
-    <bool name="config_hasDockBattery">true</bool>
-
-    <!-- Indicate whether the lid state impacts the accessibility of
-         the physical keyboard.  0 means it doesn't, 1 means it is accessible
-         when the lid is open, 2 means it is accessible when the lid is
-         closed.  The default is 0. -->
-    <integer name="config_lidKeyboardAccessibility">1</integer>
-
-    <!-- Indicate whether the lid state impacts the accessibility of
-         the navigation buttons.  0 means it doesn't, 1 means it is accessible
-         when the lid is open, 2 means it is accessible when the lid is
-         closed.  The default is 0. -->
-    <integer name="config_lidNavigationAccessibility">1</integer>
-
-    <!-- Indicate whether closing the lid causes the device to go to sleep and opening
-         it causes the device to wake up.
-         The default is false. -->
-    <bool name="config_lidControlsSleep">true</bool>
-    <integer name="config_lidOpenRotation">0</integer>
-
-    <bool name="config_unplugTurnsOnScreen">true</bool>
-    <string name="config_deviceKeyHandlerLib">/system/framework/com.cyanogenmod.asusdec.jar</string>
-    <string name="config_deviceKeyHandlerClass">com.cyanogenmod.asusdec.KeyHandler</string>
 </resources>
