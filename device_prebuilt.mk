@@ -15,6 +15,6 @@ $(LOCAL_PATH)/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
 $(LOCAL_PATH)/prebuilt/usr/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
 $(LOCAL_PATH)/prebuilt/usr/idc/elantech_touchscreen.idc:system/usr/idc/elantech_touchscreen.idc \
 $(LOCAL_PATH)/prebuilt/usr/idc/panjit_touch.idc:system/usr/idc/panjit_touch.idc \
-$(LOCAL_PATH)/prebuilt/usr/keychars/asusec.kcm:system/usr/keychars/asusec.kcm \
 $(LOCAL_PATH)/prebuilt/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
 $(LOCAL_PATH)/prebuilt/usr/keylayout/asusec.kl:system/usr/keylayout/asusec.kl \
+$(LOCAL_PATH)/prebuilt/usr/keychars/asusec.kcm:system/usr/keychars/asusec.kcm \

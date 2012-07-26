@@ -11,7 +11,7 @@ PRODUCT_COPY_FILES += \\
 HEADER
     for item in $(find * -type f); do
         echo $item
-        echo "\$(LOCAL_PATH)/prebuilt/${item}:system/${item} \\" >> ../device_$1.mk
+        echo "\$(LOCAL_PATH)/$1/${item}:system/${item} \\" >> ../device_$1.mk
     done
     cd ..
 }

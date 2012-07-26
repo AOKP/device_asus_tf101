@@ -86,4 +86,4 @@ PRODUCT_CHARACTERISTICS := tablet
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 $(call inherit-product-if-exists, vendor/asus/tf101/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/aokp/configs/common.mk)
+$(call inherit-product-if-exists, vendor/aokp/configs/common_tablets.mk)
