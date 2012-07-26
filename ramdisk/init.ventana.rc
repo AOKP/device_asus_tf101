@@ -13,13 +13,11 @@ on early-init
 on fs
     mount_all /fstab.ventana
     setprop ro.crypto.fuse_sdcard true
-    mount tmpfs tmpfs /Removable mode=0755,gid=1000
 
-    # temp fix for external storage mounts
-    mkdir /storage/sdcard1 0000 system system
-    mkdir /storage/sdcard2 0000 system system
-    mkdir /storage/usbdisk1 0000 system system
-    mkdir /storage/usbdisk2 0000 system system
+    mkdir /storage/sdcard1 0770 media_rw media_rw
+    mkdir /storage/sdcard2 0770 media_rw media_rw
+    mkdir /storage/usbdisk1 0770 media_rw media_rw
+    mkdir /storage/usbdisk2 0770 media_rw media_rw
 
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi

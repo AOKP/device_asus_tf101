@@ -25,10 +25,10 @@ JNIEXPORT jboolean JNICALL Java_com_cyanogenmod_asusdec_KeyHandler_nativeToggleT
   (JNIEnv *env, jclass cls, jboolean status) {
     ALOGD("Switching touchpad %d\n", status);
 
-    int fd = open("ASUSDEC_DEV", O_RDONLY | O_NONBLOCK);
+    int fd = open(ASUSDEC_DEV, O_RDONLY | O_NONBLOCK);
 
     if (fd < 0) {
-        ALOGE("Could  open device %s\n", "ASUSDEC_DEV");
+        ALOGE("Could not open device %s\n", ASUSDEC_DEV);
         return -1;
     }
 
