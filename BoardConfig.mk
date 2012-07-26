@@ -20,6 +20,9 @@
 # definition file).
 #
 
+# Common TF stuff
+-include device/asus/tf-common/BoardConfig_tf.mk
+
 # Bootloader defines
 TARGET_NO_RADIOIMAGE := true
 TARGET_NO_BOOTLOADER := true
@@ -90,9 +93,6 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_SDCARD_INTERNAL := true
 TARGET_RECOVERY_PRE_COMMAND := "echo 'boot-recovery' > /dev/block/mmcblk0p3; sync"
-
-# Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := device/asus/tf101
 
 # Dock
 TARGET_ASUSDEC_DEVICE_NODE := /dev/asusec

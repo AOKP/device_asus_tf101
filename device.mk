@@ -15,8 +15,12 @@
 
 DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 
-# Proprietaries
--include $(LOCAL_PATH)/device_blobs.mk
+# Proprietaries and configs
+-include $(LOCAL_PATH)/device_prebuilt.mk
+-include $(LOCAL_PATH)/device_vendor_prebuilt.mk
+
+# TF common stuff
+-include device/asus/tf-common/device_tf.mk
 
 # Bluetooth configuration file
 PRODUCT_COPY_FILES += \
@@ -58,8 +62,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    $(LOCAL_PATH)/asusdec/com.cyanogenmod.asusdec.xml:system/etc/permissions/com.cyanogenmod.asusdec.xml
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
 PRODUCT_PACKAGES := \
     audio.a2dp.default \
@@ -73,12 +76,10 @@ PRODUCT_PACKAGES := \
     whisperd \
     libaudioutils \
     libinvensense_mpl \
-    blobpack_tf \
     audio.primary.tegra \
     audio_policy.tegra \
-	com.cyanogenmod.asusdec \
-	libasusdec_jni \
 	tinyplay tinymix
+
 PRODUCT_CHARACTERISTICS := tablet
 
 # we have enough storage space to hold precise GC data

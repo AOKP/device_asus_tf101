@@ -1,15 +1,10 @@
 # This file is auto-generated. Please DO NOT edit.
-# To update this file, add your prebuilts to the prebuilt folder
+# To update this file, add your prebuilts to the vendor_prebuilt folder
 # and call ./setup-makefiles-local.sh
 PRODUCT_COPY_FILES += \
 $(LOCAL_PATH)/prebuilt/bin/glgps:system/bin/glgps \
 $(LOCAL_PATH)/prebuilt/bin/sensors-config:system/bin/sensors-config \
 $(LOCAL_PATH)/prebuilt/bin/wifimacwriter:system/bin/wifimacwriter \
-$(LOCAL_PATH)/prebuilt/bin/glgps-hack:system/bin/glgps-hack \
-$(LOCAL_PATH)/prebuilt/data/srs_processing.cfg:system/data/srs_processing.cfg \
-$(LOCAL_PATH)/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
-$(LOCAL_PATH)/prebuilt/etc/bluetooth/bdaddr:system/etc/bluetooth/bdaddr \
-$(LOCAL_PATH)/prebuilt/etc/egl.cfg:system/etc/egl.cfg \
 $(LOCAL_PATH)/prebuilt/etc/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
 $(LOCAL_PATH)/prebuilt/etc/firmware/nvmm_aacdec.axf:system/etc/firmware/nvmm_aacdec.axf \
 $(LOCAL_PATH)/prebuilt/etc/firmware/nvmm_adtsdec.axf:system/etc/firmware/nvmm_adtsdec.axf \
@@ -27,15 +22,10 @@ $(LOCAL_PATH)/prebuilt/etc/firmware/nvmm_wavdec.axf:system/etc/firmware/nvmm_wav
 $(LOCAL_PATH)/prebuilt/etc/firmware/nvmm_wmadec.axf:system/etc/firmware/nvmm_wmadec.axf \
 $(LOCAL_PATH)/prebuilt/etc/firmware/nvmm_wmaprodec.axf:system/etc/firmware/nvmm_wmaprodec.axf \
 $(LOCAL_PATH)/prebuilt/etc/firmware/nvrm_avp.bin:system/etc/firmware/nvrm_avp.bin \
-$(LOCAL_PATH)/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
-$(LOCAL_PATH)/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
-$(LOCAL_PATH)/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-$(LOCAL_PATH)/prebuilt/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
 $(LOCAL_PATH)/prebuilt/etc/nvram.txt:system/etc/nvram.txt \
 $(LOCAL_PATH)/prebuilt/etc/nvram_murata.txt:system/etc/nvram_murata.txt \
 $(LOCAL_PATH)/prebuilt/etc/nvram_nh615.txt:system/etc/nvram_nh615.txt \
 $(LOCAL_PATH)/prebuilt/etc/nvram_nh615_sl101.txt:system/etc/nvram_nh615_sl101.txt \
-$(LOCAL_PATH)/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
 $(LOCAL_PATH)/prebuilt/lib/egl/libEGL_perfhud.so:system/lib/egl/libEGL_perfhud.so \
 $(LOCAL_PATH)/prebuilt/lib/egl/libEGL_tegra.so:system/lib/egl/libEGL_tegra.so \
 $(LOCAL_PATH)/prebuilt/lib/egl/libGLESv1_CM_perfhud.so:system/lib/egl/libGLESv1_CM_perfhud.so \
@@ -109,9 +99,3 @@ $(LOCAL_PATH)/prebuilt/lib/libsensors.mpl.so:system/lib/libsensors.mpl.so \
 $(LOCAL_PATH)/prebuilt/lib/libstagefrighthw.so:system/lib/libstagefrighthw.so \
 $(LOCAL_PATH)/prebuilt/lib/modules/battery_rvsd.ko:system/lib/modules/battery_rvsd.ko \
 $(LOCAL_PATH)/prebuilt/lib/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
-$(LOCAL_PATH)/prebuilt/usr/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
-$(LOCAL_PATH)/prebuilt/usr/idc/elantech_touchscreen.idc:system/usr/idc/elantech_touchscreen.idc \
-$(LOCAL_PATH)/prebuilt/usr/idc/panjit_touch.idc:system/usr/idc/panjit_touch.idc \
-$(LOCAL_PATH)/prebuilt/usr/keychars/asusec.kcm:system/usr/keychars/asusec.kcm \
-$(LOCAL_PATH)/prebuilt/usr/keylayout/asusec.kl:system/usr/keylayout/asusec.kl \
-$(LOCAL_PATH)/prebuilt/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
