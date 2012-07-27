@@ -4,8 +4,13 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
 
     export EXTERNAL_STORAGE /storage/sdcard0
+    export SECONDARY_STORAGE /storage/sdcard1
     mkdir /storage 0050 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
+    mkdir /storage/sdcard1 0000 system system
+    mkdir /storage/sdcard2 0000 system system
+    mkdir /storage/usbdisk1 0000 system system
+    mkdir /storage/usbdisk2 0000 system system
     # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
@@ -13,11 +18,6 @@ on early-init
 on fs
     mount_all /fstab.ventana
     setprop ro.crypto.fuse_sdcard true
-
-    mkdir /storage/sdcard1 0770 media_rw media_rw
-    mkdir /storage/sdcard2 0770 media_rw media_rw
-    mkdir /storage/usbdisk1 0770 media_rw media_rw
-    mkdir /storage/usbdisk2 0770 media_rw media_rw
 
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi

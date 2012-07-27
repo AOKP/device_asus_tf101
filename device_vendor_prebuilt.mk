@@ -97,5 +97,3 @@ $(LOCAL_PATH)/vendor_prebuilt/lib/libsensors.base.so:system/lib/libsensors.base.
 $(LOCAL_PATH)/vendor_prebuilt/lib/libsensors.isl29018.so:system/lib/libsensors.isl29018.so \
 $(LOCAL_PATH)/vendor_prebuilt/lib/libsensors.mpl.so:system/lib/libsensors.mpl.so \
 $(LOCAL_PATH)/vendor_prebuilt/lib/libstagefrighthw.so:system/lib/libstagefrighthw.so \
-$(LOCAL_PATH)/vendor_prebuilt/lib/modules/battery_rvsd.ko:system/lib/modules/battery_rvsd.ko \
-$(LOCAL_PATH)/vendor_prebuilt/lib/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
