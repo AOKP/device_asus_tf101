@@ -19,9 +19,6 @@ DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 -include $(LOCAL_PATH)/device_prebuilt.mk
 -include $(LOCAL_PATH)/device_vendor_prebuilt.mk
 
-# TF common stuff
--include device/asus/tf-common/device_tf.mk
-
 # Bluetooth configuration file
 PRODUCT_COPY_FILES += \
     system/bluetooth/data/main.nonsmartphone.conf:system/etc/bluetooth/main.conf
@@ -84,6 +81,9 @@ PRODUCT_CHARACTERISTICS := tablet
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
+
+# TF common stuff
+$(call inherit-product, device/asus/tf-common/device_tf.mk)
 
 $(call inherit-product-if-exists, vendor/asus/tf101/device-vendor.mk)
 $(call inherit-product-if-exists, vendor/aokp/configs/common_tablets.mk)
