@@ -87,3 +87,4 @@ $(call inherit-product, device/asus/tf-common/device_tf.mk)
 
 $(call inherit-product-if-exists, vendor/asus/tf101/device-vendor.mk)
 $(call inherit-product-if-exists, vendor/aokp/configs/common_tablets.mk)
+$(call inherit-product, vendor/aokp/configs/themes_common.mk)
