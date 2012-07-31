@@ -78,7 +78,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
     $(LOCAL_PATH)/prebuilt/etc/permissions/com.asus.hardware.00.xml:system/etc/permissions/com.asus.hardware.00.xml \
-    $(LOCAL_PATH)/asusec/com.cyanogenmod.asusec.xml:system/etc/permissions/com.cyanogenmod.asusec.xml
 
 #Misc
 PRODUCT_COPY_FILES += \
@@ -108,9 +107,9 @@ PRODUCT_PACKAGES += \
         hcitool \
         bttest \
         whisperd \
-        AutoParts \
-        com.cyanogenmod.asusec \
-        libasusec_jni
+        #AutoParts \
+        #com.cyanogenmod.asusec \
+        #libasusec_jni
 
 # Propertys spacific for this device
 PRODUCT_PROPERTY_OVERRIDES := \
