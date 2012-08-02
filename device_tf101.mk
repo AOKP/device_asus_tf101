@@ -25,25 +25,25 @@ DEVICE_PACKAGE_OVERLAYS += device/asus/tf101/overlay
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/init.ventana.rc:root/init.ventana.rc \
     $(LOCAL_PATH)/ramdisk/init.ventana.usb.rc:root/init.ventana.usb.rc \
+    $(LOCAL_PATH)/ramdisk/fstab.ventana:root/fstab.ventana \
     $(LOCAL_PATH)/ramdisk/ueventd.ventana.rc:root/ueventd.ventana.rc \
     $(LOCAL_PATH)/ramdisk/init.ventana.keyboard.rc:root/init.ventana.keyboard.rc \
-    $(LOCAL_PATH)/prebuilt/keyswap::root/sbin/keyswap
+    $(LOCAL_PATH)/ramdisk/keyswap::root/sbin/keyswap
 
 # Prebuilt configeration files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/mixer_paths.xml:system/etc/mixer_paths.xml \
-    $(LOCAL_PATH)/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/prebuilt/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    $(LOCAL_PATH)/prebuilt/etc/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml \
+    $(LOCAL_PATH)/prebuilt/etc/gps/gpsconfig.xml:system/etc/gps/gpsconfig.xml
 
 # Input device configeration files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/usr/idc/atmel-maxtouch.idc:system/usr/idc/atmel-maxtouch.idc \
     $(LOCAL_PATH)/prebuilt/usr/idc/elantech_touchscreen.idc:system/usr/idc/elantech_touchscreen.idc \
-    $(LOCAL_PATH)/prebuilt/usr/idc/panjit_touch.idc:system/usr/idc/panjit_touch.idc \
+    $(LOCAL_PATH)/prebuilt/usr/idc/panjit_touch.idc:system/usr/idc/panjit_touch.idc
 
 # Localized input keychars and keylayout files
     $(call inherit-product, $(LOCAL_PATH)/keychars/l10n/l10n.mk)
@@ -51,16 +51,9 @@ PRODUCT_COPY_FILES += \
 
 # Camera/WiFi/BT Firmware
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/etc/bluetooth/audio.conf:system/etc/bluetooth/audio.conf \
-    $(LOCAL_PATH)/prebuilt/etc/bluetooth/auto_pairing.conf:system/etc/bluetooth/auto_pairing.conf \
-    $(LOCAL_PATH)/prebuilt/etc/bluetooth/blacklist.conf:system/etc/bluetooth/blacklist.conf \
-    $(LOCAL_PATH)/prebuilt/etc/bluetooth/input.conf:system/etc/bluetooth/input.conf \
-    $(LOCAL_PATH)/prebuilt/etc/bluetooth/network.conf:system/etc/bluetooth/network.conf \
     $(LOCAL_PATH)/prebuilt/etc/nvram.txt:system/etc/nvram.txt \
     $(LOCAL_PATH)/prebuilt/etc/nvram_murata.txt:system/etc/nvram_murata.txt \
-    $(LOCAL_PATH)/prebuilt/etc/nvram_4329.txt:system/etc/nvram_4329.txt \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/BCM4329B1_002.002.023.0797.0863.hcd:system/etc/firmware/BCM4329B1_002.002.023.0797.0863.hcd \
-    $(LOCAL_PATH)/prebuilt/bin/brcm_patchram_plus:system/bin/brcm_patchram_plus \
+    $(LOCAL_PATH)/prebuilt/etc/nvram_4329.txt:system/etc/nvram_4329.txt
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -82,14 +75,6 @@ PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
     $(LOCAL_PATH)/prebuilt/etc/permissions/com.asus.hardware.00.xml:system/etc/permissions/com.asus.hardware.00.xml \
 
-#Misc
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/xbin/remount:system/xbin/remount \
-    $(LOCAL_PATH)/prebuilt/bin/ps3service:system/bin/ps3service \
-    $(LOCAL_PATH)/prebuilt/xbin/rfcomm:system/xbin/rfcomm \
-    $(LOCAL_PATH)/prebuilt/xbin/ps3bttest:system/xbin/ps3bttest \
-    $(LOCAL_PATH)/prebuilt/bin/sixpair:system/bin/sixpair \
-
 # Build characteristics setting
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -110,10 +95,7 @@ PRODUCT_PACKAGES += \
         l2ping \
         hcitool \
         bttest \
-        whisperd \
-        #AutoParts \
-        #com.cyanogenmod.asusec \
-        #libasusec_jni
+        whisperd
 
 # Propertys spacific for this device
 PRODUCT_PROPERTY_OVERRIDES := \

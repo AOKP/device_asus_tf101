@@ -37,3 +37,12 @@
 /dev/ttyUSB3    0660    radio    system
 /dev/ttyUSB4    0660    radio    system
 /dev/ttyUSB5    0660    radio    system
+
+/dev/nvhost-ctrl    0666    root    root  
+/dev/nvhost-display    0666    root    root 
+/dev/nvhost-dsi    0666    root    root 
+/dev/nvhost-gr2d    0666    root    root 
+/dev/nvhost-gr3d    0666    root    root 
+/dev/nvhost-isp    0666    root    root 
+/dev/nvhost-mpe    0666    root    root 
+/dev/nvhost-vi    0666    root    root 
