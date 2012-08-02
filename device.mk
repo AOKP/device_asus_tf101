@@ -84,4 +84,4 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # TF common stuff
 $(call inherit-product, device/asus/tf-common/device_tf.mk)
-$(call inherit-product, vendor/aokp/configs/common_tablets.mk)
+$(call inherit-product, vendor/aokp/configs/common_tablet.mk)
