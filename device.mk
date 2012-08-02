@@ -31,7 +31,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/ueventd.ventana.rc:root/ueventd.ventana.rc
 
 # Inherit bcm4329 stuff
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
+$(call inherit-product, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
@@ -84,7 +84,4 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # TF common stuff
 $(call inherit-product, device/asus/tf-common/device_tf.mk)
-
-$(call inherit-product-if-exists, vendor/asus/tf101/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/aokp/configs/common_tablets.mk)
-$(call inherit-product, vendor/aokp/configs/themes_common.mk)
+$(call inherit-product, vendor/aokp/configs/common_tablets.mk)
