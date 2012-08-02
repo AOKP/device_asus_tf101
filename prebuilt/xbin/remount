@@ -1,7 +1,0 @@
-#!/system/bin/sh
-if [ "$1" == "rw" ]; then
-	mount -o remount,rw,noauto_da_alloc /system /system
-fi
-if [ "$1" == "ro" ]; then
-	mount -o remount,ro,noauto_da_alloc /system /system
-fi
