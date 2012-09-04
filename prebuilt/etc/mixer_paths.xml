@@ -40,4 +40,8 @@
   <path name="headset-mic">
     <ctl name="Mic Jack Switch" value="1" />
   </path>
+  
+  <path name="hdmi">
+    <ctl name="Speaker Switch" value="0" />
+  </path>
 </mixer>

@@ -7,10 +7,10 @@ on early-init
     export SECONDARY_STORAGE /storage/sdcard1
     mkdir /storage 0050 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
-    mkdir /storage/sdcard1 0000 system system
-    mkdir /storage/sdcard2 0000 system system
-    mkdir /storage/usbdisk1 0000 system system
-    mkdir /storage/usbdisk2 0000 system system
+    mkdir /storage/sdcard1 0770 media_rw media_rw
+    mkdir /storage/sdcard2 0770 media_rw media_rw
+    mkdir /storage/usbdisk1 0770 media_rw media_rw
+    mkdir /storage/usbdisk2 0770 media_rw media_rw
     # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
@@ -115,10 +115,12 @@ on boot
     setprop net.tcp.buffersize.hsdpa 4096,87380,524288,4096,87380,524288
     setprop net.tcp.buffersize.hsupa 4096,87380,524288,4096,87380,524288
 
-service gps-hack /system/bin/mksh /system/bin/glgps-hack
-    class main
-    user root
-    oneshot
+on boot
+  service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
+  socket gps seqpacket 660 gps system
+  user gps
+  group system inet
+  class late_start
 
 # Write Wi-Fi Mac
 service wifimacwriter /system/bin/wifimacwriter
