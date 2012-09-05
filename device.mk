@@ -84,4 +84,8 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # TF common stuff
 $(call inherit-product, device/asus/tf-common/device_tf.mk)
+
+# AOKP
 $(call inherit-product, vendor/aokp/configs/common_tablet.mk)
+PRODUCT_COPY_FILES += \
+	vendor/aokp/prebuilt/bootanimation/bootanimation_1280_800.zip:system/media/bootanimation.zip
