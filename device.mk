@@ -17,7 +17,6 @@ DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 
 # Proprietaries and configs
 -include $(LOCAL_PATH)/device_prebuilt.mk
--include $(LOCAL_PATH)/device_vendor_prebuilt.mk
 
 # Bluetooth configuration file
 PRODUCT_COPY_FILES += \
@@ -84,8 +83,3 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # TF common stuff
 $(call inherit-product, device/asus/tf-common/device_tf.mk)
-
-# AOKP
-$(call inherit-product, vendor/aokp/configs/common_tablet.mk)
-PRODUCT_COPY_FILES += \
-	vendor/aokp/prebuilt/bootanimation/bootanimation_1280_800.zip:system/media/bootanimation.zip

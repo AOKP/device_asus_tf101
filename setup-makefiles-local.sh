@@ -16,4 +16,4 @@ HEADER
     cd ..
 }
 generate prebuilt
-generate vendor_prebuilt
+

@@ -23,7 +23,7 @@
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
-$(call inherit-product-if-exists, vendor/asus/tf101/tf101-vendor.mk)
+$(call inherit-product-if-exists, vendor/asus/tf101/device-vendor.mk)
 
 # A few more packages that aren't quite used on all builds
 PRODUCT_PACKAGES := \
