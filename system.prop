@@ -12,4 +12,4 @@ ro.device.cpu=1 GHz NVIDIA Tegra 2 250 T20
 ro.device.gpu=NVIDIA ULP GeForce
 ro.device.rear_cam=5 MP
 ro.device.front_cam=1.2 MP
-ro.device.screen_res=720x1280
+ro.device.screen_res=1280x800
