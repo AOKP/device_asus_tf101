@@ -74,7 +74,7 @@ PRODUCT_PACKAGES := \
     libinvensense_mpl \
     audio.primary.tegra \
     audio_policy.tegra \
-	tinyplay tinymix
+    tinyplay tinymix
 
 PRODUCT_CHARACTERISTICS := tablet
 
