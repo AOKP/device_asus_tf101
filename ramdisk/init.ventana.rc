@@ -115,6 +115,9 @@ on boot
     setprop net.tcp.buffersize.hsdpa 4096,87380,524288,4096,87380,524288
     setprop net.tcp.buffersize.hsupa 4096,87380,524288,4096,87380,524288
 
+# Disallow wm8903 to sleep at all
+    write /sys/class/sound/card0/power/control on
+
 on boot
   service gps-daemon /system/bin/glgps -c /system/etc/gps/gpsconfig.xml
   socket gps seqpacket 660 gps system
